@@ -1,10 +1,29 @@
 import Sidebar from "../Components/Layout/Sidebar"
 import Header from "../Components/Layout/Header"
+import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
 
+
+export type Pays = {
+  names: {
+    common: string;
+    official: string;
+  };
+  flags: {
+    png: string;
+  };
+  capital: string[];
+  population: number;
+  region: string;
+  subregion: string;
+  languages: Record<string, string>;
+  currencies: Record<string, { name: string; symbol: string }>;
+  borders: string[];
+  timezones: string[];
+}
 const Dashboard : React.FC = ({})=>{
-    const [country, SetCountry] = useState<(string | number)[]>([])
+    const [country, SetCountry] = useState<Pays[]>([])
     useEffect(()=>{
         response()
     },[])
@@ -20,8 +39,7 @@ const Dashboard : React.FC = ({})=>{
             }
             );
             const data = await res.data
-            console.log("Status :", res.status)
-            if (data) SetCountry(data)
+            if (data) SetCountry(res.data.data.objects)
         
         } 
         catch (error) 
@@ -39,7 +57,14 @@ const Dashboard : React.FC = ({})=>{
                     <Header/>
                     <main className='flex-1 overflow-y-auto bg-transparent'>
                       <div className='p-6 space-y-6'>
-                        {/* <Dashboard/> */}
+                        {
+                            country.map((countryItem,index)=>{
+                                console.log(countryItem)
+                                return(
+                                    <Cartepays key={index} countries={countryItem}/>
+                                )
+                            })
+                        }
                         
                       </div>
                     </main>

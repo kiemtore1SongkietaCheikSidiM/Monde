@@ -1,12 +1,12 @@
 import './App.css'
-import API from './Components/Parts/Api'
+import Dashboard from './pages/Dashboard'
 
 const App : React.FC =() => {
    
     return (
         
-        <API/>
-      
+        
+        <><Dashboard/></>
     )
 }
 export default App
@@ -116,33 +116,5 @@ response();
 /* import Dashboard from './pages/Dashboard'
 import Header from './Components/Layout/Header'
 import Sidebar from './Components/Layout/Sidebar' */
-/* type Names={
-    common:string,
-    official:string
-}
-type Capital={
-    name:string
-}
-type Flageimage={
-    url_png:string
-}
-type Language={
-    name:string
-}
-type Monnais={
-    name:string
-    symbol:string
-} */
-/* type Post = {
-    names:Names[],
-    flag:Flageimage[],
-    capitals:Capital[],
-    population:number,
-    region:string,
-    subregion:string,
-    languages:Language[],
-    currencies:Monnais[],
-    border:string[],
-    timezones:string[]
-} */
+/*  */
 /* const cle_API_REST : string = 'rc_live_665264788e314c599245d0a226b09913' */
