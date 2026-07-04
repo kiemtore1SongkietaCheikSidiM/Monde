@@ -3,10 +3,17 @@ import Header from "../Components/Layout/Header"
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
+type Search={
+    searchTerm:string
+    SetserchTerm:React.Dispatch<React.SetStateAction<string>>
+}
 type Capital = {
   name: string;
 }
-
+type Monnais={
+    name:string,
+    symbol:string
+}
 export type Pays = {
   names: {
     common: string;
@@ -19,14 +26,12 @@ export type Pays = {
   population: number;
   region: string;
   subregion: string;
-  languages:{
-    name:string
-  };
-  currencies: { name: string; symbol: string };
+  languages:Capital[];
+  currencies: Monnais[];
   borders: string[];
   timezones: string[];
 }
-const Dashboard : React.FC = ({})=>{
+const Dashboard  = ({searchTerm}:Search)=>{
     const [country, SetCountry] = useState<Pays[]>([])
     useEffect(()=>{
         response()
@@ -51,6 +56,7 @@ const Dashboard : React.FC = ({})=>{
            console.log(error) 
         }
     }
+    const filtre = country.filter(countr =>countr.names.common.toLowerCase().includes(searchTerm))
     /* console.log(country,'countries') */
     return (
         <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50

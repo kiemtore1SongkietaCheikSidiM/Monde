@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiMenu } from "react-icons/fi";
-import { IoMdSearch } from "react-icons/io";
+import Recherche from '../Parts/Recherche';
 import { IoIosAddCircle } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -13,7 +13,9 @@ let newnotification : number
 newnotification = 3
 let role: string
 role = 'Visiteur'
+
 const Header: React.FC = () =>{
+    const [searchTerm,SetserchTerm] = useState<string>('')
     return (
         <div className={` bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
         border-slate-200/50 dark:border-slate-700/80 px-6 py-4`}>
@@ -32,13 +34,7 @@ const Header: React.FC = () =>{
                 </div>
                 {/* center */}
                 <div className='flex-1 max-w-md mx-8'>
-                    <div className='relative '>
-                        <IoMdSearch className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2
-                          text-slate-400 dark:text-slate-100"/>
-                        <input type="text" className='w-full pl-10 pr-4
-                        py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-800
-                        dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all' placeholder='Rechercher un pays' />
-                    </div>
+                    <Recherche searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
                 </div>
                 {/* Right section */}
                 <div className='flex items-center space-x-3'>

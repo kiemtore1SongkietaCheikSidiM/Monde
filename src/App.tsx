@@ -6,7 +6,7 @@ const App : React.FC =() => {
     return (
         
         
-        <><Dashboard/></>
+        <><Dashboard/></> 
     )
 }
 export default App

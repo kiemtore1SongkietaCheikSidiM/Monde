@@ -7,8 +7,8 @@ type Props = {
 
 const Cartepays = ({ countries }: Props) => {
   return (
-    <div className="bg-neutral-100 block max-w-sm p-6 border border-default rounded-2xl shadow-xs">
-        <img src={countries.flag.url_png} alt={countries.names.official} className="rounded-base w-60 h-45 text-center"/>
+    <div className="bg-neutral-100 block max-w-sm p-6 border border-default rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105">
+        <img src={countries.flag.url_png} alt={countries.names.official} className="rounded-base w-full  h-37 object-cover  text-center"/>
         <div className="mt-2">
             <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight text-center">
                 {countries.names.common}
@@ -31,11 +31,11 @@ const Cartepays = ({ countries }: Props) => {
             </p>
             <p className="flex space-x-2">
                 <strong className="font-semibold">Langue: </strong>
-                {countries.languages.name}
+                {countries.languages?.[0]?.name}
             </p>
             <p className="flex space-x-2">
                 <strong className="font-semibold">Monnaies: </strong>
-                 {countries.currencies.name} {countries.currencies.symbol}
+                 {countries.currencies?.[0]?.name} {countries.currencies?.[0]?.symbol}
             </p>
             <p className="flex space-x-2">
                 <strong className="font-semibold">Pays voisins: </strong>
