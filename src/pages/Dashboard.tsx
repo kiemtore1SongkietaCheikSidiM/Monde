@@ -3,22 +3,26 @@ import Header from "../Components/Layout/Header"
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
-
+type Capital = {
+  name: string;
+}
 
 export type Pays = {
   names: {
     common: string;
     official: string;
   };
-  flags: {
-    png: string;
+  flag: {
+    url_png: string;
   };
-  capital: string[];
+  capitals: Capital[];
   population: number;
   region: string;
   subregion: string;
-  languages: Record<string, string>;
-  currencies: Record<string, { name: string; symbol: string }>;
+  languages:{
+    name:string
+  };
+  currencies: { name: string; symbol: string };
   borders: string[];
   timezones: string[];
 }
@@ -47,7 +51,7 @@ const Dashboard : React.FC = ({})=>{
            console.log(error) 
         }
     }
-    console.log(country,'countries')
+    /* console.log(country,'countries') */
     return (
         <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50
         to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500`}>
@@ -56,12 +60,13 @@ const Dashboard : React.FC = ({})=>{
                 <div className='flex-1 flex flex-col overflow-hidden'>
                     <Header/>
                     <main className='flex-1 overflow-y-auto bg-transparent'>
-                      <div className='p-6 space-y-6'>
+                      <div className="gap-4 grid grid-cols-3">
                         {
                             country.map((countryItem,index)=>{
-                                console.log(countryItem)
-                                return(
-                                    <Cartepays key={index} countries={countryItem}/>
+                                /* console.log(countryItem.capitals)
+                                console.log(countryItem.capitals[0].name) */
+                                return(                                   
+                                    <Cartepays key={index} countries={countryItem}/>                                    
                                 )
                             })
                         }

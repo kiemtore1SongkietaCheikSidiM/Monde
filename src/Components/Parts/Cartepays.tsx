@@ -1,4 +1,5 @@
 import type { Pays } from "../../pages/Dashboard"
+import { MdFavoriteBorder } from "react-icons/md"
 
 type Props = {
   countries: Pays;
@@ -6,8 +7,51 @@ type Props = {
 
 const Cartepays = ({ countries }: Props) => {
   return (
-    <div className="mt-2">
-      <h3>{countries.names.common}</h3>
+    <div className="bg-neutral-100 block max-w-sm p-6 border border-default rounded-2xl shadow-xs">
+        <img src={countries.flag.url_png} alt={countries.names.official} className="rounded-base w-60 h-45 text-center"/>
+        <div className="mt-2">
+            <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight text-center">
+                {countries.names.common}
+            </h2>
+            <p className="flex space-x-2">
+                <strong className="font-bold ">Population: </strong>
+                {countries.population.toLocaleString()}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Region: </strong>
+                {countries.region}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Capital: </strong>
+                {countries.capitals?.[0]?.name}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Sous-region: </strong>
+                {countries.subregion}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Langue: </strong>
+                {countries.languages.name}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Monnaies: </strong>
+                 {countries.currencies.name} {countries.currencies.symbol}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Pays voisins: </strong>
+                {countries.borders}
+            </p>
+            <p className="flex space-x-2">
+                <strong className="font-semibold">Fuseau Horaires: </strong>
+                {countries.timezones}
+            </p>
+            <div className="mt-2 p-2 flex space-x-4 bg-blue-400 border rounded-2xl hover:bg-blue-600 cursor-pointer text-2xl text-slate-900 dark:text-slate-100">
+                <p>Ajouter aux favories</p>
+                <div>
+                    <MdFavoriteBorder className="w-7 h-7"/>
+                </div>
+            </div>
+        </div>
     </div>
   );
 };
