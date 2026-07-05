@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { FiMenu } from "react-icons/fi";
 import Recherche from '../Parts/Recherche';
 import { IoIosAddCircle } from "react-icons/io";
@@ -13,9 +12,12 @@ let newnotification : number
 newnotification = 3
 let role: string
 role = 'Visiteur'
-
-const Header: React.FC = () =>{
-    const [searchTerm,SetserchTerm] = useState<string>('')
+type Search={
+    searchTerm:string
+    SetserchTerm:React.Dispatch<React.SetStateAction<string>>
+} 
+const Header = ({ searchTerm, SetserchTerm }: Search) =>{
+    
     return (
         <div className={` bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
         border-slate-200/50 dark:border-slate-700/80 px-6 py-4`}>
@@ -34,6 +36,7 @@ const Header: React.FC = () =>{
                 </div>
                 {/* center */}
                 <div className='flex-1 max-w-md mx-8'>
+                    {/* Je vais mettre en place la recherche */}
                     <Recherche searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
                 </div>
                 {/* Right section */}

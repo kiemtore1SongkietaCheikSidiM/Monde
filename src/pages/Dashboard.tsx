@@ -3,10 +3,7 @@ import Header from "../Components/Layout/Header"
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
-type Search={
-    searchTerm:string
-    SetserchTerm:React.Dispatch<React.SetStateAction<string>>
-}
+/* */
 type Capital = {
   name: string;
 }
@@ -31,8 +28,9 @@ export type Pays = {
   borders: string[];
   timezones: string[];
 }
-const Dashboard  = ({searchTerm}:Search)=>{
+const Dashboard  = ()=>{
     const [country, SetCountry] = useState<Pays[]>([])
+    const [searchTerm,SetserchTerm] = useState<string>('')
     useEffect(()=>{
         response()
     },[])
@@ -56,7 +54,7 @@ const Dashboard  = ({searchTerm}:Search)=>{
            console.log(error) 
         }
     }
-    const filtre = country.filter(countr =>countr.names.common.toLowerCase().includes(searchTerm))
+    const filtre = country.filter(countr =>countr.names.common.toLowerCase().includes(searchTerm.toLowerCase()))
     /* console.log(country,'countries') */
     return (
         <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50
@@ -64,15 +62,15 @@ const Dashboard  = ({searchTerm}:Search)=>{
             <div className='flex h-screen overflow-hidden'>
                 <Sidebar/>
                 <div className='flex-1 flex flex-col overflow-hidden'>
-                    <Header/>
+                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
                     <main className='flex-1 overflow-y-auto bg-transparent'>
                       <div className="gap-4 grid grid-cols-3">
                         {
-                            country.map((countryItem,index)=>{
+                            filtre.map((countryItem,index)=>{
                                 /* console.log(countryItem.capitals)
                                 console.log(countryItem.capitals[0].name) */
                                 return(                                   
-                                    <Cartepays key={index} countries={countryItem}/>                                    
+                                    <Cartepays key={index} countries={countryItem} />                                    
                                 )
                             })
                         }
