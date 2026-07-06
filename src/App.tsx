@@ -1,12 +1,12 @@
 import './App.css'
-import Dashboard from './pages/Dashboard'
+import Setting from './pages/Setting'
 
 const App : React.FC =() => {
    
     return (
+        <Setting/>
         
         
-        <><Dashboard/></> 
     )
 }
 export default App

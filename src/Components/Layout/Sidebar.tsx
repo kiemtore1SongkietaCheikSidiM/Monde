@@ -1,11 +1,14 @@
 import React from 'react'
 import { IoMdHome } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md"
-import { FaHistory } from "react-icons/fa";
+import { FaHistory ,FaMoneyCheckAlt} from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { TfiWorld } from "react-icons/tfi";
 import { CiSettings } from "react-icons/ci";
+import { TiWeatherCloudy } from "react-icons/ti"
+import { AiFillPicture } from "react-icons/ai"
+import { RiTimeZoneFill } from "react-icons/ri"
 let name: string
 let role : string
 name = 'Karim'
@@ -47,6 +50,26 @@ const MenuItem : SidebarProps[] =[
         active:true,
     },
     {
+        id:7,
+        icon:TiWeatherCloudy,
+        label:"Meteo"
+    },
+    {
+        id:8,
+        icon:AiFillPicture,
+        label:"Paysage"
+    },
+    {
+        id:9,
+        icon:FaMoneyCheckAlt,
+        label:"Devise"
+    },
+    {
+        id:10,
+        icon:RiTimeZoneFill,
+        label:"Heure Locale"
+    },
+    {
         id:5,
         icon:CiSettings,
         label: 'Parametres'
@@ -55,7 +78,7 @@ const MenuItem : SidebarProps[] =[
         id:6,
         icon:CiLogout,
         label: 'Deconnexion'
-    }
+    },
 ]
 const Sidebar: React.FC = ()=>{
     return (
@@ -94,12 +117,12 @@ const Sidebar: React.FC = ()=>{
                              transition-all duration-200 hover:bg-blue-200 dark:hover:bg-slate-800
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                                focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900">
-                                <div className='flex items-center space-x-3'>
+                                <div className='flex items-center space-x-3 p-2'>
                                     
-                                    <item.icon className={`w-5 h-5 text-slate-600 dark:text-slate-300 ${item.color ? '' : `text-${item.color}-700`}`} />
+                                    <item.icon className={`w-6 h-6 text-slate-600 dark:text-slate-300 ${item.color ? '' : `text-${item.color}-700`}`} />
                                     
                                     {/* Condition Rendering */}
-                                    <span className='font-medium ml-2'>
+                                    <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
                                         {item.label}
                                     </span>
                                     {item.count && (
