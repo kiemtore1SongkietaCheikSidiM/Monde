@@ -4,7 +4,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown,FaFilter  } from "react-icons/fa";
 
 let name: string
 name = 'Karim'
@@ -40,6 +40,10 @@ const Header = ({ searchTerm, SetserchTerm }: Search) =>{
                     <Recherche searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
                 </div>
                 {/* Right section */}
+                <button className="" name="filtre">
+                    <FaFilter className="w-5 h-5 ml-1"/>
+                </button>
+                
                 <div className='flex items-center space-x-3'>
                     <button className='hidden lg:flex items-center space-x-2 py-2 px-4 bg-linear-to-r 
                      from-blue-500 to-purple-600 text-white rounded-xl 
@@ -48,8 +52,8 @@ const Header = ({ searchTerm, SetserchTerm }: Search) =>{
                         <span className='text-sm font-medium'>Action</span>
                     </button>
                    {/*  Notification */}
-                   <button className='relative p-2.5 rounded-xl text-slate-800 dark:slate-300
-                    hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors'>
+                   <button className='relative p-2.5 rounded-xl text-slate-800 dark:text-slate-300
+                    hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors'>
                         <FaBell className='w-5 h-5'/>
                         <span className='absolute -top-1 w-5 h-5 bg-red-500 text-white text-xs
                          rounded-ful flex items-center justify-center'>{newnotification}</span>

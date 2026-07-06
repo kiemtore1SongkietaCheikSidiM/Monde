@@ -31,14 +31,13 @@ export type Pays = {
 const Dashboard  = ()=>{
     const [country, SetCountry] = useState<Pays[]>([])
     const [searchTerm,SetserchTerm] = useState<string>('')
-    const [page,SetPage] = useState<number>(1)
     useEffect(()=>{
         response()
     },[])
     async function response() { 
         try 
         {
-            const res = await axios("https://api.restcountries.com/countries/v5",
+            const res = await axios("https://api.restcountries.com/countries/v5?limit=100",
             {
                 headers: 
                 {
@@ -64,14 +63,8 @@ const Dashboard  = ()=>{
                 <Sidebar/>
                 <div className='flex-1 flex flex-col overflow-hidden'>
                     <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
-                    <main className='flex-1 overflow-y-auto bg-transparent'>
-                        <div className="p-2 text-center">
-                            <button className="space-x-60 p-2">
-                                <span className="border rounded-none p-2 bg-blue-400 hover:bg-blue-600">Page {page}</span>
-                                <span className="border rounded-none p-2 bg-blue-400 hover:bg-blue-600">Page {page + 1}</span>
-                            </button>
-                        </div>
-                        <div className="gap-4 grid grid-cols-3">
+                    <main className='flex-1 overflow-y-auto overflow-x-hidden bg-transparent'>
+                        <div className="gap-2 grid grid-cols-3">
                         {
                             filtre.map((countryItem,index)=>{
                                 /* console.log(countryItem.capitals)

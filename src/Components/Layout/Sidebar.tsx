@@ -114,7 +114,7 @@ const Sidebar: React.FC = ()=>{
                     return(
                         <div key={item.id}>
                             <button className="w-full flex items-center justify-between p-3 rounded-xl
-                             transition-all duration-200 hover:bg-blue-200 dark:hover:bg-slate-800
+                             transition-all duration-200 hover:bg-blue-200 dark:hover:bg-blue-400
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                                focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900">
                                 <div className='flex items-center space-x-3 p-2'>
