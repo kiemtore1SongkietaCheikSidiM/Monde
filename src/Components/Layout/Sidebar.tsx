@@ -1,6 +1,5 @@
 import React from 'react'
 import { IoMdHome } from "react-icons/io";
-import { MdFavoriteBorder } from "react-icons/md"
 import { FaHistory ,FaMoneyCheckAlt} from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
