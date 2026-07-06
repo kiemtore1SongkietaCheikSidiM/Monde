@@ -12,7 +12,7 @@ let newnotification : number
 newnotification = 3
 let role: string
 role = 'Visiteur'
-type Search={
+ export type Search={
     searchTerm:string
     SetserchTerm:React.Dispatch<React.SetStateAction<string>>
 } 
