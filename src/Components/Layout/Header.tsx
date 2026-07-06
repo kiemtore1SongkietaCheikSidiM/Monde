@@ -31,7 +31,7 @@ const Header = ({ searchTerm, SetserchTerm }: Search) =>{
                     </button>
                     <div className=' md:blok'>
                         <h1 className='text-2xl font-black text-slate-800 dark:text-white'>Le Monde</h1>
-                        <p>Bienvenue dans notre reseau {name}</p>
+                        <p className="font-medium text-slate-800 dark:text-zinc-300">Bienvenue dans notre reseau {name}</p>
                     </div>
                 </div>
                 {/* center */}

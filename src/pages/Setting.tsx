@@ -3,8 +3,35 @@ import Header from "../Components/Layout/Header"
 import { MdLightMode } from "react-icons/md"
 import { MdNightlight } from "react-icons/md"
 import type { Search } from "../Components/Layout/Header"
+import { useEffect, useState } from "react"
 
 const Setting = ({searchTerm,SetserchTerm}:Search) => {
+    const defaultState : string = localStorage.getItem('theme') || 'light'
+    const [theme, setTheme] = useState<string>(defaultState)
+
+    useEffect(()=>{
+        localStorage.setItem('theme', theme)
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+    },[theme])
+    const Clair: React.FC =() =>{
+        if(theme=='light'){
+            setTheme('light')
+        }
+        else{
+            setTheme('light')
+        }
+    }
+    const Sombre:React.FC = ()=>{
+        if (theme=='dark') {
+            setTheme('dark')
+        }else {
+            setTheme("dark")
+        }
+    }
+    /* const handleButton:React.FC = () => {
+    // Switches the theme:
+    setTheme(theme == 'light' ? 'dark' : 'light')
+   } */
     return (
         <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50
         to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500`}>
@@ -17,8 +44,8 @@ const Setting = ({searchTerm,SetserchTerm}:Search) => {
                         {/* <Dashboard/> */}
                         <div className="flex gap-6 grid-cols-2">
                             <div className="block p-15 m-2 border rounded-2xl ">
-                                <button className="">
-                                    <MdLightMode className="w-25 h-25 text-center"/>
+                                <button className="cursor-pointer" onClick={Clair}>
+                                    <MdLightMode className="w-25 h-25 text-center text-yellow-300"/>
                                     <p className="mt-20 mr-5  text-slate-700 dark:text-slate-200 ">
                                         Theme Clair
                                     </p>
@@ -27,10 +54,12 @@ const Setting = ({searchTerm,SetserchTerm}:Search) => {
 
 
                             <div className="block p-15 m-2 border rounded-2xl">
-                                <MdNightlight className="w-25 h-25 text-center"/>
-                                <p className="mt-20 mr-5  text-slate-700 dark:text-slate-200 ">
-                                    Theme 
-                                </p>
+                                <button onClick={Sombre}>
+                                    <MdNightlight className="w-25 h-25 text-center"/>
+                                    <p className="mt-20 mr-5  text-slate-700 dark:text-slate-200 ">
+                                        Theme Sombre
+                                    </p>
+                                </button>
                         </div>
                         </div>
                       </div>

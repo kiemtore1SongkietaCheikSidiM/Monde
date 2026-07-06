@@ -8,6 +8,7 @@ import { TfiWorld } from "react-icons/tfi";
 import { CiSettings } from "react-icons/ci";
 import { TiWeatherCloudy } from "react-icons/ti"
 import { AiFillPicture } from "react-icons/ai"
+import { FaHeart } from "react-icons/fa"
 import { RiTimeZoneFill } from "react-icons/ri"
 let name: string
 let role : string
@@ -31,7 +32,7 @@ const MenuItem : SidebarProps[] =[
     },
     {
         id:2,
-        icon:MdFavoriteBorder,
+        icon:FaHeart,
         label:'Favoris',
         color:'red',
         count:2,
@@ -119,7 +120,12 @@ const Sidebar: React.FC = ()=>{
                                focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900">
                                 <div className='flex items-center space-x-3 p-2'>
                                     
-                                    <item.icon className={`w-6 h-6 text-slate-600 dark:text-slate-300 ${item.color ? '' : `text-${item.color}-700`}`} />
+                                    <item.icon className={`w-6 h-6 text-slate-600 dark:text-slate-300
+                                        ${
+                                            item.color
+                                            ?`text-${item.color}-700`
+                                            : "text-slate-600 dark:text-slate-300"
+                                        }`} />
                                     
                                     {/* Condition Rendering */}
                                     <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
