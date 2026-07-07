@@ -35,3 +35,8 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 
 
  I use this https://openweathermap.org/api/one-call-4?collection=one_call_api for the wheather API I have created an account then I get an API key for Authentification. I use it for free
+
+
+ After that I start by making a search on (https://www.youtube.com/). On Search input I pyped exchangerateApi react and I find 
+ that videos (https://www.youtube.com/watch?v=m0FI4clFD2Y). According to him I use to get an API key on
+ (https://www.exchangerate-api.com/) And make the the rest of activities about that.

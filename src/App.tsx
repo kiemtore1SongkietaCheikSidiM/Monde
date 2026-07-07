@@ -1,10 +1,14 @@
+import { useEffect, useState } from 'react'
 import './App.css'
-import OpenWheather from './pages/OpenWheather'
+import axios from 'axios'
+import ExchangeRate from './pages/ExchageRate'
+
 
 const App : React.FC =() => {
-  return(
-    <OpenWheather/>
-  )
+  
+return (
+  <ExchangeRate/>
+)
 }
 export default App
 
@@ -33,9 +37,37 @@ export default App
 
 
 
+/* 
 
-
-
+<div className='flex flex-row mt-15 gap-x-12'>
+      <div className='border-black border-2 rounded-lg p-1'>
+        <select name="" id="" value={currencies}
+        onChange={(e)=>setCurrencies(e.target.value)} className='bg-black text-white rounded-lg pt-2 pb-2'>
+          {
+            Object.keys(ExchangeRate).map((curr)=>(
+              <option key={curr} value={curr}>
+                {curr}
+              </option>
+            ))
+          }
+        </select>
+        <input type="number" className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount1} onChange={(e)=> SetAmount(e.target.value)}/>
+      </div>
+      <div className='border-black border-2 rounded-lg p-1'>
+        <select name="" id="" className='bg-black text-white rounded-lg pt-2 pb-2' value={currenties2}
+        onChange={(e)=>SetCurrencies2(e.target.value)} >
+          {
+            Object.keys(ExchangeRate).map((curr)=>(
+              <option key={curr}>
+                {curr}
+              </option>
+            ))
+          }
+        </select>
+        <input type="number" className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount2} onChange={(e)=> SetAmount2(e.target.value)}/>
+      </div>
+      
+    </div> */
 
 
 
