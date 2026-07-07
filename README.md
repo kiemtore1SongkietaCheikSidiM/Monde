@@ -30,3 +30,8 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+ 
+ For the country Call API Iuse to create my account in (https://restcountries.com/) and take a key where I use to make this
+
+
+ I use this https://openweathermap.org/api/one-call-4?collection=one_call_api for the wheather API I have created an account then I get an API key for Authentification. I use it for free

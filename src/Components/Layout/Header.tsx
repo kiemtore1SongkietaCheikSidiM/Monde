@@ -14,9 +14,11 @@ let role: string
 role = 'Visiteur'
  export type Search={
     searchTerm:string
+    search:string
     SetserchTerm:React.Dispatch<React.SetStateAction<string>>
+    SetSearch:React.Dispatch<React.SetStateAction<string>>
 } 
-const Header = ({ searchTerm, SetserchTerm }: Search) =>{
+const Header = ({ searchTerm, SetserchTerm ,SetSearch,search}: Search) =>{
     
     return (
         <div className={` bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
@@ -37,7 +39,7 @@ const Header = ({ searchTerm, SetserchTerm }: Search) =>{
                 {/* center */}
                 <div className='flex-1 max-w-md mx-8'>
                     {/* Je vais mettre en place la recherche */}
-                    <Recherche searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
+                    <Recherche searchTerm={searchTerm} SetserchTerm={SetserchTerm} SetSearch={SetSearch} search={search}/>
                 </div>
                 {/* Right section */}
                 <button className="" name="filtre">

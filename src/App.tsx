@@ -1,13 +1,10 @@
 import './App.css'
-import Dashboard from './pages/Dashboard'
+import OpenWheather from './pages/OpenWheather'
 
 const App : React.FC =() => {
-   
-    return (
-        
-        
-        <><Dashboard/></> 
-    )
+  return(
+    <OpenWheather/>
+  )
 }
 export default App
 

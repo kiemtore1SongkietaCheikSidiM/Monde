@@ -28,7 +28,11 @@ export type Pays = {
   borders: string[];
   timezones: string[];
 }
-const Dashboard  = ()=>{
+type props={
+    search:string 
+    SetSearch:React.Dispatch<React.SetStateAction<string>>
+}
+const Dashboard  = ({SetSearch,search}:props)=>{
     const [country, SetCountry] = useState<Pays[]>([])
     const [searchTerm,SetserchTerm] = useState<string>('')
     useEffect(()=>{
@@ -62,7 +66,7 @@ const Dashboard  = ()=>{
             <div className='flex h-screen overflow-hidden'>
                 <Sidebar/>
                 <div className='flex-1 flex flex-col overflow-hidden'>
-                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
+                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm} SetSearch={SetSearch} search={search}/>
                     <main className='flex-1 overflow-y-auto overflow-x-hidden bg-transparent'>
                         <div className="gap-2 grid grid-cols-3">
                         {
