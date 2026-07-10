@@ -15,12 +15,14 @@ const user = auth.currentUser
 let newnotification : number =3
 let role: string = 'Visiteur'
 export type Search={
-    searchTerm:string
-    search:string
-    SetserchTerm:React.Dispatch<React.SetStateAction<string>>
-    SetSearch:React.Dispatch<React.SetStateAction<string>>
+    searchTerm?:string | (()=> void) 
+    search?:string
+    SetserchTerm?:React.Dispatch<React.SetStateAction<string>>
+    SetSearch?:React.Dispatch<React.SetStateAction<string>>
+    sidebarcollaps?:boolean
+    ontoggle?:()=>void
 } 
-const Header = ({ searchTerm, SetserchTerm ,SetSearch,search}: Search) =>{
+const Header = ({ searchTerm, SetserchTerm ,SetSearch,search,sidebarcollaps,ontoggle}: Search) =>{
     
     return (
         <div className={` bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
@@ -31,7 +33,7 @@ const Header = ({ searchTerm, SetserchTerm ,SetSearch,search}: Search) =>{
                 {/* left section */}
                 <div className="flex items-center space-x-4">
                     <button className='p-2 rounded-lg text-slate-600 dark:text-slate-300
-                     hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors'
+                     hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors' onClick={ontoggle}
                      >
                         
                          {/* We put that button where you can hide the sidebar and show it again when we need it */}

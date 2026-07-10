@@ -12,6 +12,7 @@ import { RiTimeZoneFill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
 import { signOut } from 'firebase/auth'
 import { auth } from '../../pages/firebase'
+import type { Search } from './Header'
 
 
 
@@ -102,7 +103,7 @@ const MenuItem : SidebarProps[] =[
 
 
 
-const Sidebar: React.FC = ()=>{
+const Sidebar = ({sidebarcollaps,ontoggle}:Search)=>{
     const navigate = useNavigate()
     const handleLogout = async () => {
     try {
@@ -115,7 +116,7 @@ const Sidebar: React.FC = ()=>{
     return (
 
 
-        <div className={` 
+        <div className={` ${!sidebarcollaps ?"w-25": "w-64"}
          transition-all duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80
          backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 
          flex flex-col relative z-10`}>
@@ -127,20 +128,22 @@ const Sidebar: React.FC = ()=>{
                     <div className="w-10 h-10 bg-linear-to-r from-blue-600
                      to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                         <TfiWorld className='w-6 h-6 text-white'/>
-                     </div>
+                    </div>
 
                      
                      {/* Condition rendering */}
-                     <div>
-                      <h1
-                       className='text-xl font-bold text-slate-800 dark:text-white'>
-                        Le Monde
-                      </h1>
-                      <p className='
-                        text-xs text-slate-500 dark:text-slate-400'>
-                        Platforme de decouverte des pays du monde
-                      </p>
-                    </div>
+                     {sidebarcollaps && (
+                        <div>
+                            <h1
+                            className='text-xl font-bold text-slate-800 dark:text-white'>
+                                Le Monde
+                            </h1>
+                            <p className='
+                             text-xs text-slate-500 dark:text-slate-400'>
+                                Platforme de decouverte des pays du monde
+                            </p>
+                        </div>
+                     )}
                 </div>
             </div>
 
@@ -166,27 +169,33 @@ const Sidebar: React.FC = ()=>{
                                     <item.icon className={item.color === 'red' ? 'text-red-500 h-5 w-5' : 'text-gray-500 h-5 w-5'}  />
                                     
                                     {/* Condition Rendering */}
-                                    <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
-                                        {item.label}
-                                    </span>
-                                    {item.count && (
-                                        <span className='px-2 py-1 text-xs bg-slate-200
-                                        dark:bg-slate-800 text-slate-600 dark:text-slate-100
-                                         rounded-full'>
-                                            {item.count}
-                                        </span>
-                                    )}
-                                    {item.badge && (
-                                        <span className='px-2 py-1 text-xs bg-red-500 text-white
-                                         rounded-full'>
-                                            {item.badge}
-                                        </span>
-                                    )}
-                                    {item.active &&(
-                                        <span className='px-2 py-1 text-xs bg-blue-500 text-white
-                                         rounded-full'>
-                                            {item.active}
-                                        </span>
+                                    {sidebarcollaps && (
+                                        <>
+                                            <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
+                                                {item.label}
+                                            </span>
+                                            {
+                                                item.count && (
+                                                    <span className='px-2 py-1 text-xs bg-slate-200
+                                                     dark:bg-slate-800 text-slate-600 dark:text-slate-100
+                                                     rounded-full'>
+                                                        {item.count}
+                                                    </span>
+                                                )
+                                            }
+                                            {item.badge && (
+                                                <span className='px-2 py-1 text-xs bg-red-500 text-white
+                                                 rounded-full'>
+                                                    {item.badge}
+                                                </span>
+                                            )}
+                                            {item.active && (
+                                                <span className='px-2 py-1 text-xs bg-blue-500 text-white
+                                                 rounded-full'>
+                                                    {item.active}
+                                                </span>
+                                            )}
+                                        </>
                                     )}
                                 </div>
                             </button>
@@ -203,7 +212,8 @@ const Sidebar: React.FC = ()=>{
                  dark:bg-slate-800/50'>
                     <CgProfile className='w-8 h-8 text-slate-600 dark:text-slate-300'/>
                     <div className='flex-1 min-w-0'>
-                        <div className='flex-1 min-w-0'>
+                        {sidebarcollaps && (
+                            <div className='flex-1 min-w-0'>
                             <p className='text-sm font-medium text-slate-800 dark:text-white truncate'>
                                {user?.displayName}
                             </p>
@@ -211,6 +221,7 @@ const Sidebar: React.FC = ()=>{
                                 {role}
                             </p>
                         </div>
+                        )}
                     </div>
                  </div>
             </div>
