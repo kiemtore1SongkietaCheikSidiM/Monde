@@ -56,4 +56,4 @@ const Cartepays = ({ countries }: Props) => {
   );
 };
 
-export default Cartepays;
+export default Cartepays

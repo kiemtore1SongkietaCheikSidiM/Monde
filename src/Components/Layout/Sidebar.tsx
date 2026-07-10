@@ -1,22 +1,29 @@
 import React from 'react'
-import { IoMdHome } from "react-icons/io";
-import { FaHistory ,FaMoneyCheckAlt} from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
-import { CiLogout } from "react-icons/ci";
-import { TfiWorld } from "react-icons/tfi";
-import { CiSettings } from "react-icons/ci";
+import { IoMdHome } from "react-icons/io"
+import { FaHistory ,FaMoneyCheckAlt} from "react-icons/fa"
+import { CgProfile } from "react-icons/cg"
+import { CiLogout } from "react-icons/ci"
+import { TfiWorld } from "react-icons/tfi"
+import { CiSettings } from "react-icons/ci"
 import { TiWeatherCloudy } from "react-icons/ti"
 import { AiFillPicture } from "react-icons/ai"
 import { FaHeart } from "react-icons/fa"
 import { RiTimeZoneFill } from "react-icons/ri"
-let name: string
-let role : string
-name = 'Karim'
-role = 'Visiteur'
+import { useNavigate } from "react-router-dom"
+import { signOut } from 'firebase/auth'
+import { auth } from '../../pages/firebase'
+
+
+
+
+let role : string = "Visiteur"
+const user = auth.currentUser;
 interface SidebarProps {
     id: number,
     icon: React.ElementType,
     label: string,
+    path?:string,
+    action?:string
     count?:number,
     active?:boolean,
     badge?:boolean,
@@ -27,7 +34,8 @@ const MenuItem : SidebarProps[] =[
     {
         id:1,
         icon:IoMdHome,
-        label:'Accueil'
+        label:'Accueil',
+        path:"/"
     },
     {
         id:2,
@@ -35,6 +43,7 @@ const MenuItem : SidebarProps[] =[
         label:'Favoris',
         color:'red',
         count:2,
+        path: "/favorie"
 
     },
     {
@@ -42,50 +51,76 @@ const MenuItem : SidebarProps[] =[
         icon:FaHistory,
         label:'Historique',
         badge:true,
+        path:"/history"
     },
     {
         id:4,
         icon:CgProfile,
         label: 'Profil',
         active:true,
+        path:"/profile"
     },
     {
         id:7,
         icon:TiWeatherCloudy,
-        label:"Meteo"
+        label:"Meteo",
+        path:"/temps"
     },
     {
         id:8,
         icon:AiFillPicture,
-        label:"Paysage"
+        label:"Paysage",
+        path:"/pixel"
     },
     {
         id:9,
         icon:FaMoneyCheckAlt,
-        label:"Devise"
+        label:"Devise",
+        path:"/rate"
     },
     {
         id:10,
         icon:RiTimeZoneFill,
-        label:"Heure Locale"
+        label:"Heure Locale",
+        path:"/timezone"
     },
     {
         id:5,
         icon:CiSettings,
-        label: 'Parametres'
+        label: 'Parametres',
+        path:"/setting"
     },
     {
         id:6,
         icon:CiLogout,
-        label: 'Deconnexion'
+        label: 'Deconnexion',
+        action:"logout"
     },
 ]
+
+
+
+
+
 const Sidebar: React.FC = ()=>{
+    const navigate = useNavigate()
+    const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/Login');
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
     return (
+
+
         <div className={` 
          transition-all duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80
          backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 
          flex flex-col relative z-10`}>
+           
+           
            {/*  Logo */}
             <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
                 <div className="flex items-center space-x-3">
@@ -94,6 +129,7 @@ const Sidebar: React.FC = ()=>{
                         <TfiWorld className='w-6 h-6 text-white'/>
                      </div>
 
+                     
                      {/* Condition rendering */}
                      <div>
                       <h1
@@ -111,20 +147,23 @@ const Sidebar: React.FC = ()=>{
             {/* Navigation. I will display the navigation items in a list and map through the MenuItem array to display each item with its icon and label. If the item has a count or badge, I will display that as well. If the item is active, I will apply a different style to indicate that it is currently selected. */}
             <nav className='flex-1 p-4 space-y-2 overflow-y-auto'>
                 {MenuItem.map((item)=>{
+                    const handleClick = () => {
+                    if (item.action === 'logout') {
+                        handleLogout();
+                    }
+                    else if (item.path)
+                        {
+                            navigate(item.path);
+                        }
+                    };
                     return(
                         <div key={item.id}>
-                            <button className="w-full flex items-center justify-between p-3 rounded-xl
+                            <button className="w-full cursor-pointer flex items-center justify-between p-3 rounded-xl
                              transition-all duration-200 hover:bg-blue-200 dark:hover:bg-blue-400
                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                               focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900">
-                                <div className='flex items-center space-x-3 p-2'>
-                                    
-                                    <item.icon className={`w-6 h-6 text-slate-600 dark:text-slate-300
-                                        ${
-                                            item.color
-                                            ?`text-${item.color}-700`
-                                            : "text-slate-600 dark:text-slate-300"
-                                        }`} />
+                               focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900" onClick={handleClick}>
+                                <div className='flex items-center space-x-3 p-2'>    
+                                    <item.icon className={item.color === 'red' ? 'text-red-500 h-5 w-5' : 'text-gray-500 h-5 w-5'}  />
                                     
                                     {/* Condition Rendering */}
                                     <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
@@ -166,7 +205,7 @@ const Sidebar: React.FC = ()=>{
                     <div className='flex-1 min-w-0'>
                         <div className='flex-1 min-w-0'>
                             <p className='text-sm font-medium text-slate-800 dark:text-white truncate'>
-                               {name}
+                               {user?.displayName}
                             </p>
                             <p className='text-sm text-slate-500 dark:text-slate-400 truncate'>
                                 {role}

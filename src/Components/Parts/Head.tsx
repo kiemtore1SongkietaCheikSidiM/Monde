@@ -1,5 +1,7 @@
 import { TfiWorld } from "react-icons/tfi";
 import { FaGithub,FaDiscord,FaYoutube,FaFacebook } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Head : React.FC = () =>{
     return(
@@ -31,10 +33,10 @@ const Head : React.FC = () =>{
 
                 <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        <li>Home</li>
-                        <li>Contact</li>
-                        <li>Login</li>
-                        <li>Register</li>
+                       <li> <Link to="/">Home</Link></li>
+                       <li> <Link to="/login">Connexion</Link></li>
+                       <li> <Link to="/register">Cree son compte</Link></li>
+                       <li><a href="mailto:kiemtorecheik@gmail.com">Contact</a></li>
                     </ul>
                 </div>
             </div>

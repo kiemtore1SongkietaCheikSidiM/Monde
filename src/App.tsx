@@ -1,14 +1,48 @@
-import { useEffect, useState } from 'react'
+import { ProtectedRoute } from './pages/ProtectedRoute';
+import { AuthProvider } from './pages/AuthContext';
 import './App.css'
-import axios from 'axios'
+import { BrowserRouter, Route, Routes} from "react-router-dom"
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import Setting from './pages/Setting'
+import Profile from './pages/Profile'
+import Error from './pages/Error'
+import ForgetPassword from './pages/ForgetPassword'
+import Favories from './pages/Favories'
 import ExchangeRate from './pages/ExchageRate'
+import OpenWheather from './pages/OpenWheather'
+import PixelAPI from './pages/PixelAPI'
+import TimeZoneAPI from './pages/TimeZoneApi'
+import Layout from './Components/Layout/Layout';
+import type { Props } from './Components/Parts/Recherche';
 
+const App  =({search,SetSearch,searchTerm,SetserchTerm}:Props) => {
+  return(
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes (No Layout, No Auth Required) */}
+          <Route path='/Login' element={<Login/>}/>
+          <Route path='/Register' element={<Register/>}/>
+          <Route path='/oublie' element={<ForgetPassword/>}/>
+          <Route path='/error' element={<Error/>}/>
 
-const App : React.FC =() => {
-  
-return (
-  <ExchangeRate/>
-)
+          {/* Protected Group Routes (Wrapped in Security and Nav Layout) */}
+          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route path='/' element={<Dashboard search={search} SetSearch={SetSearch}/>}/>
+            <Route path='/setting' element={<Setting search={search} SetSearch={SetSearch} searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>}/>
+            <Route path='/profile' element={<Profile search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+            <Route path='/favorie' element={<Favories/>}/>
+            <Route path='/rate' element={<ExchangeRate search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+            <Route path='/temps' element={<OpenWheather search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+            <Route path='/pixel' element={<PixelAPI/>}/>
+            <Route path='/timezone' element={<TimeZoneAPI search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  )
 }
 export default App
 
@@ -78,7 +112,18 @@ export default App
 
 
 
-
+/* const pays:string = "Japan"
+  const API_Key:string= "pTWZnAHWzP8o7TbNdxJNWkn9oFC2ODitrvnfHeQdMUbEQyT9ncNfujjg"
+  const URL:string = `https://api.pexels.com/v1/search?query=${pays}&per_page=12`
+  const ok =async ()=>{
+    const res = await axios.get(URL,{
+      headers:{
+        Authorization:API_Key
+    }
+    })
+    console.log(res.data)
+  }
+  ok() */
 
 
 

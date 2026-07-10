@@ -2,10 +2,10 @@ import Sidebar from "../Components/Layout/Sidebar"
 import Header from "../Components/Layout/Header"
 import { MdLightMode } from "react-icons/md"
 import { MdNightlight } from "react-icons/md"
-import type { Search } from "../Components/Layout/Header"
+import type { Props } from "../Components/Parts/Recherche"
 import { useEffect, useState } from "react"
 
-const Setting = ({searchTerm,SetserchTerm}:Search) => {
+const Setting = ({searchTerm,SetserchTerm,SetSearch,search}:Props) => {
     const defaultState : string = localStorage.getItem('theme') || 'light'
     const [theme, setTheme] = useState<string>(defaultState)
 
@@ -38,7 +38,7 @@ const Setting = ({searchTerm,SetserchTerm}:Search) => {
             <div className='flex h-screen overflow-hidden'>
                 <Sidebar/>
                 <div className='flex-1 flex flex-col overflow-hidden'>
-                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>
+                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm} SetSearch={SetSearch} search={search}/>
                     <main className='flex-1 overflow-y-auto bg-transparent'>
                       <div className='p-6 space-y-6'>
                         {/* <Dashboard/> */}

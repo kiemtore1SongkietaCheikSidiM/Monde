@@ -3,6 +3,12 @@ import Header from "../Components/Layout/Header"
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
+import type { Props } from "../Components/Parts/Recherche"
+
+
+
+
+
 /* */
 type Capital = {
   name: string;
@@ -28,13 +34,11 @@ export type Pays = {
   borders: string[];
   timezones: string[];
 }
-type props={
-    search:string 
-    SetSearch:React.Dispatch<React.SetStateAction<string>>
-}
-const Dashboard  = ({SetSearch,search}:props)=>{
+
+const Dashboard  = ({SetSearch,search}:Props)=>{
     const [country, SetCountry] = useState<Pays[]>([])
     const [searchTerm,SetserchTerm] = useState<string>('')
+    
     useEffect(()=>{
         response()
     },[])
@@ -71,8 +75,6 @@ const Dashboard  = ({SetSearch,search}:props)=>{
                         <div className="gap-2 grid grid-cols-3">
                         {
                             filtre.map((countryItem,index)=>{
-                                /* console.log(countryItem.capitals)
-                                console.log(countryItem.capitals[0].name) */
                                 return(                                   
                                     <Cartepays key={index} countries={countryItem} />                                    
                                 )
@@ -81,7 +83,7 @@ const Dashboard  = ({SetSearch,search}:props)=>{
                         
                       </div>
                     </main>
-                </div>
+                </div> 
             </div>
       </div> 
     )

@@ -1,15 +1,63 @@
+import { useState } from 'react';
 import Head from '../Components/Parts/Head'
 import { TfiWorld } from "react-icons/tfi";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import { auth } from "./firebase"; // Imports your initialized auth instance
+import { useNavigate } from 'react-router-dom';
+
+
+
+export async function loginUser(email: string, password: string): Promise<void> {
+  try {
+    // This securely verifies credentials and starts a user session
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log(`User logged in successfully! UID: ${user.uid}`);
+  } catch (error: unknown) {
+    if (error instanceof FirebaseError) {
+      switch (error.code) {
+        case "auth/invalid-credential":
+        case "auth/user-not-found":
+        case "auth/wrong-password":
+          console.error("Adresse e-mail ou mot de passe incorrect.");
+          break;
+        default:
+          console.error(`Login error [${error.code}]: ${error.message}`);
+      }
+    } else {
+      console.error("An unexpected error occurred:", error);
+    }
+  }
+}
+
 
 
 const Login : React.FC = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLoginSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await loginUser(email, password);
+            alert("Connexion réussie !");
+            const navigate = useNavigate()
+            navigate('/')
+           // Place redirect logic here (e.g., redirect to /dashboard)
+        } 
+        catch (err) {
+            alert("Échec de la connexion.");
+        }
+    };
+
     return (
         <div className="relative items-center"> 
             <div className='bg-white/50 dark:bg-slate-700 backdrop-blur-xl border-b
              border-slate-200/50 dark:border-slate-700/80 px-6 py-4'>
                 <Head/>
             </div>
-            <div className="h-full w-full bg-slate-50 dark:bg-neutral-700 text-center justify-center items-center mr-10">
+            <div className="h-full w-full bg-slate-50 dark:bg-neutral-700 text-center justify-center items-center ">
                 <div className="container h-full p-10 items-center text-center">
                     <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200 text-center m-10">
                         <div className="w-full">
@@ -26,11 +74,12 @@ const Login : React.FC = () => {
                                                 </h4>
                                             </div>
 
-                                            <form>
+                                            <form onSubmit={handleLoginSubmit}>
                                                 {/* Username input */}
                                                 <div className="relative m-2">
-                                                    <input type="text" id="hs-floating-input-email" className="border peer p-4 block w-full bg-layer border-layer-line rounded-lg sm:text-sm text-foreground placeholder:text-transparent focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none focus:pt-6
-                                                     focus:pb-2 not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 autofill:pt-6 autofill:pb-2" placeholder="you@email.com"/>
+                                                    <input type="email" id="email" name="email" className="border peer p-4 block w-full bg-layer border-layer-line rounded-lg sm:text-sm text-foreground placeholder:text-transparent focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none focus:pt-6
+                                                     focus:pb-2 not-placeholder-shown:pt-6 not-placeholder-shown:pb-2 autofill:pt-6 autofill:pb-2" placeholder="you@email.com"
+                                                     onChange={(e)=>setEmail(e.target.value)}/>
                                                     <label className="absolute top-0 inset-s-0 p-4 h-full sm:text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent text-foreground origin-top-left peer-disabled:opacity-50 peer-disabled:pointer-events-none
                                                      peer-focus:scale-90
                                                      peer-focus:translate-x-0.5
@@ -40,13 +89,17 @@ const Login : React.FC = () => {
                                                      peer-not-placeholder-shown:translate-x-0.5
                                                      peer-not-placeholder-shown:-translate-y-1.5
                                                      peer-not-placeholder-shown:text-muted-foreground-1">
-                                                        Nom d'utilisateur
+                                                        Email
                                                     </label>
                                                 </div>
 
                                                 {/* Password input */}
                                                 <div className="relative m-2">
-                                                    <input type="password" id="hs-floating-input-passowrd" className="border peer p-4 block w-full bg-layer border-layer-line rounded-lg sm:text-sm text-foreground placeholder:text-transparent focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none
+                                                    <input type="password" onChange={(e)=>setPassword(e.target.value)}
+                                                    id="password" name='password' 
+                                                    className="border peer p-4 block w-full bg-layer border-layer-line 
+                                                    rounded-lg sm:text-sm text-foreground placeholder:text-transparent 
+                                                    focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none
                                                      focus:pt-6
                                                      focus:pb-2
                                                      not-placeholder-shown:pt-6
@@ -69,7 +122,8 @@ const Login : React.FC = () => {
                                                
                                                 <div className="mb-12 pb-1 pt-1 text-center">
                                                     {/* <TERipple  className="w-full"> */}
-                                                        <button className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]" type="button"
+                                                        <button className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]" 
+                                                        type="submit"
                                                          style={{
                                                          background:
                                                          "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
