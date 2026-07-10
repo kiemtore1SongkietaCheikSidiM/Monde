@@ -7,7 +7,8 @@ import axios from 'axios'
 
 
 
-
+const autorisation = import.meta.env.VITE_Authorization
+const url = import.meta.env.VITE_REST_URL
 type Capital = {
   name: string;
 }
@@ -39,15 +40,16 @@ const Dashboard  = ()=>{
     
     useEffect(()=>{
         response()
+        
     },[])
     async function response() { 
         try 
         {
-            const res = await axios("https://api.restcountries.com/countries/v5?limit=100",
+            const res = await axios(url,
             {
                 headers: 
                 {
-                    Authorization: "Bearer rc_live_84ece2b1a1794a1cbfbdc9dcdba4627d"
+                    Authorization: autorisation
                 }
             }
             );

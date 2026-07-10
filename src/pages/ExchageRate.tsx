@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 
-const URL:string ="https://v6.exchangerate-api.com/v6/d6934abcd1f70c51565bd285/latest/USD"
+const URL:string = import.meta.env.VITE_exchange
 const ExchangeRate = ()=> {
     const [Amount1,SetAmount] = useState<number>(0)
     const [Amount2, SetAmount2] = useState<number>(0)

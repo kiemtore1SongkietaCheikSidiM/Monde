@@ -15,12 +15,14 @@ type Time = {
     description:string,
   }[]
 }
+const keys = import.meta.env.VITE_Keys
+const base = import.meta.env.VITE_base
 const OpenWheather = ()=> {
     const [weather , SetWeather] = useState<Time | null>()
     const [search,SetSearch] = useState<string>('')
     const api= {
-       key: "944b97131b0ad6ab34262245dffd657b",
-       base: "https://api.openweathermap.org/data/2.5/",
+       key: keys,
+       base: base,
     }
     const searchpressed = async ()=>{
         try {
