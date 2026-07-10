@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./firebase"; // Your firebase.ts file must be in this folder!
 import { useState } from 'react';
-import loadings from "../../public/loading.jpeg"
+import loadings from "../image/loading.jpeg"
 
 interface UserProfile {
   displayName: string;

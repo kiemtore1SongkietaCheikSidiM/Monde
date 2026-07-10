@@ -1,12 +1,9 @@
-import Sidebar from "../Components/Layout/Sidebar"
-import Header from "../Components/Layout/Header"
-import type { Search } from "../Components/Layout/Header"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
 
 const URL:string ="https://v6.exchangerate-api.com/v6/d6934abcd1f70c51565bd285/latest/USD"
-const ExchangeRate = ({searchTerm,SetserchTerm,SetSearch,search}:Search)=> {
+const ExchangeRate = ()=> {
     const [Amount1,SetAmount] = useState<number>(0)
     const [Amount2, SetAmount2] = useState<number>(0)
     const [currencies, setCurrencies] = useState<string>("USD")
@@ -43,53 +40,44 @@ const ExchangeRate = ({searchTerm,SetserchTerm,SetSearch,search}:Search)=> {
         }
   },[Amount1,Amount2,currencies,currenties2,ExchangeRate])
     return (
-        <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50
-        to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500`}>
-            <div className='flex h-screen overflow-hidden'>
-                <Sidebar/>
-                <div className='flex-1 flex flex-col overflow-hidden'>
-                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm} SetSearch={SetSearch} search={search}/>
-                    <main className='block overflow-y-auto overflow-x-hidden bg-transparent'>
-                        <div className="text-2xl font-bold text-slate-600 dark:text-slate-100 mt-10 text-center">
-                            Bienvenue dans la page des devise Ici on fait une convertion actualiser des devises mondiaux 
-                        </div>
+        <div>
+            <div className="text-2xl font-bold text-slate-600 dark:text-slate-100 mt-10 text-center">
+                Bienvenue dans la page des devise Ici on fait une convertion actualiser des devises mondiaux 
+            </div>
                         
                         
 
-                        <div className='flex flex-row mt-15 gap-x-12 mr-10'>
-                            <div className='border-black border-2 rounded-lg p-3 m-2'>
-                               <select name="" id="" value={currencies}
-                                onChange={(e)=>setCurrencies(e.target.value)} className='bg-black text-white rounded-lg p-4'>
-                                {
-                                    Object.keys(exchangerate).map((curr)=>(
-                                        <option key={curr} value={curr}>
-                                            {curr}
-                                        </option>
-                                        ))
-                                        }
-                                </select>
-                                <input type="number" className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount1} 
-                                onChange={(e)=> SetAmount(e.target.value=== "" ? 0 : Number(e.target.value))}/>
-                            </div>
-                            <div className='border-black border-2 rounded-lg p-3 m-2'>
-                                <select name="currencies2" id="currencies2" className='bg-black text-white rounded-lg p-4' value={currenties2}
-                                onChange={(e)=>SetCurrencies2(e.target.value)} >
-                                {
-                                    Object.keys(exchangerate).map((curr)=>(
-                                        <option key={curr} value={curr}>
-                                            {curr}
-                                        </option>
-                                    ))
-                                }
-                                </select>
-                                <input type="number" readOnly className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount2} 
-                                onChange={(e)=> SetAmount2(e.target.value=== "" ? 0 : Number(e.target.value))}/>
-                            </div>
-                        </div>     
-                    </main>
+            <div className='flex flex-row mt-15 gap-x-12 mr-10'>
+                <div className='border-black border-2 rounded-lg p-3 m-2'>
+                    <select name="" id="" value={currencies}
+                    onChange={(e)=>setCurrencies(e.target.value)} className='bg-black text-white rounded-lg p-4'>
+                        {
+                            Object.keys(exchangerate).map((curr)=>(
+                                <option key={curr} value={curr}>
+                                    {curr}
+                                </option>
+                            ))
+                        }
+                    </select>
+                    <input type="number" className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount1} 
+                     onChange={(e)=> SetAmount(e.target.value=== "" ? 0 : Number(e.target.value))}/>
+                </div>
+                <div className='border-black border-2 rounded-lg p-3 m-2'>
+                    <select name="currencies2" id="currencies2" className='bg-black text-white rounded-lg p-4' value={currenties2}
+                     onChange={(e)=>SetCurrencies2(e.target.value)} >
+                        {
+                            Object.keys(exchangerate).map((curr)=>(
+                                <option key={curr} value={curr}>
+                                    {curr}
+                                </option>
+                            ))
+                        }
+                    </select>
+                    <input type="number" readOnly className='border-b-2 ml-3 border-blue-700 outline-none' value={Amount2} 
+                     onChange={(e)=> SetAmount2(e.target.value=== "" ? 0 : Number(e.target.value))}/>
                 </div>
             </div>
-      </div>
+        </div>
     )
 }
 export default ExchangeRate

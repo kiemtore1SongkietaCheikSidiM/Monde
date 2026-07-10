@@ -1,15 +1,13 @@
-import Sidebar from "../Components/Layout/Sidebar"
-import Header from "../Components/Layout/Header"
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
-import type { Props } from "../Components/Parts/Recherche"
 
 
 
 
 
-/* */
+
+
 type Capital = {
   name: string;
 }
@@ -35,7 +33,7 @@ export type Pays = {
   timezones: string[];
 }
 
-const Dashboard  = ({SetSearch,search}:Props)=>{
+const Dashboard  = ()=>{
     const [country, SetCountry] = useState<Pays[]>([])
     const [searchTerm,SetserchTerm] = useState<string>('')
     
@@ -65,27 +63,16 @@ const Dashboard  = ({SetSearch,search}:Props)=>{
     const filtre = country.filter(countr =>countr.names.common.toLowerCase().includes(searchTerm.toLowerCase()))
     /* console.log(country,'countries') */
     return (
-        <div className={`min-h-screen bg-linear-to-br from-slate-50 via-blue-50
-        to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500`}>
-            <div className='flex h-screen overflow-hidden'>
-                <Sidebar/>
-                <div className='flex-1 flex flex-col overflow-hidden'>
-                    <Header searchTerm={searchTerm} SetserchTerm={SetserchTerm} SetSearch={SetSearch} search={search}/>
-                    <main className='flex-1 overflow-y-auto overflow-x-hidden bg-transparent'>
-                        <div className="gap-2 grid grid-cols-3">
-                        {
-                            filtre.map((countryItem,index)=>{
-                                return(                                   
-                                    <Cartepays key={index} countries={countryItem} />                                    
-                                )
-                            })
-                        }
+        <div className="gap-2 grid grid-cols-3">
+            {
+                filtre.map((countryItem,index)=>{
+                    return(                                   
+                        <Cartepays key={index} countries={countryItem} />                                    
+                        )
+                    })
+            }
                         
-                      </div>
-                    </main>
-                </div> 
-            </div>
-      </div> 
+        </div> 
     )
 }
 
