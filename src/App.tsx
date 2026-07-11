@@ -29,15 +29,15 @@ const App  =({search,SetSearch,searchTerm,SetserchTerm}:Props) => {
           <Route path='/error' element={<Error/>}/>
 
           {/* Protected Group Routes (Wrapped in Security and Nav Layout) */}
-          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-            <Route path='/' element={<Dashboard search={search} SetSearch={SetSearch}/>}/>
-            <Route path='/setting' element={<Setting search={search} SetSearch={SetSearch} searchTerm={searchTerm} SetserchTerm={SetserchTerm}/>}/>
-            <Route path='/profile' element={<Profile search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+          <Route element={<ProtectedRoute><Layout search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/></ProtectedRoute>}>
+            <Route path='/' element={<Dashboard/>}/>
+            <Route path='/setting' element={<Setting/>}/>
+            <Route path='/profile' element={<Profile/>}/>
             <Route path='/favorie' element={<Favories/>}/>
-            <Route path='/rate' element={<ExchangeRate search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
-            <Route path='/temps' element={<OpenWheather search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+            <Route path='/rate' element={<ExchangeRate/>}/>
+            <Route path='/temps' element={<OpenWheather/>}/>
             <Route path='/pixel' element={<PixelAPI/>}/>
-            <Route path='/timezone' element={<TimeZoneAPI search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/>}/>
+            <Route path='/timezone' element={<TimeZoneAPI/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

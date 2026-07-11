@@ -5,7 +5,25 @@ type Props = {
   countries: Pays;
 };
 
+
 const Cartepays = ({ countries }: Props) => {
+    const Ajouterfavorie = ()=>{
+        //Catch favorie
+        const favories:Pays [] = JSON.parse(
+            localStorage.getItem("favories") || "[]"
+        )
+        //Check if it already exist
+        const existe = favories.some(
+            (item) => item.names.common === countries.names.common
+        )
+        if(existe){
+            alert("CE pays existe deja dans les favories")
+            return
+        }
+        favories.push(countries)
+        localStorage.setItem("favories",JSON.stringify(favories))
+        alert(`Ajouter aux favories`)
+    }
   return (
     <div className="bg-neutral-100 block max-w-sm p-6 border border-default rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105">
         <img src={countries.flag.url_png} alt={countries.names.official} className="rounded-base w-full  h-37 object-cover  text-center"/>
@@ -45,7 +63,7 @@ const Cartepays = ({ countries }: Props) => {
                 <strong className="font-semibold">Fuseau Horaires: </strong>
                 {countries.timezones}
             </p>
-            <div className="mt-2 p-2 flex space-x-4 bg-blue-400 border rounded-2xl hover:bg-blue-600 cursor-pointer text-2xl text-slate-900 dark:text-slate-100">
+            <div onClick={Ajouterfavorie} className="mt-2 p-2 flex space-x-4 bg-blue-400 border rounded-2xl hover:bg-blue-600 cursor-pointer text-2xl text-slate-900 dark:text-slate-100">
                 <p>Ajouter aux favories</p>
                 <div>
                     <MdFavoriteBorder className="w-7 h-7"/>
