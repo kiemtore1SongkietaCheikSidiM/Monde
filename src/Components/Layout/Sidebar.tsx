@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoMdHome } from "react-icons/io"
-import { FaHistory ,FaMoneyCheckAlt} from "react-icons/fa"
+import { FaMoneyCheckAlt} from "react-icons/fa"
 import { CgProfile } from "react-icons/cg"
 import { CiLogout } from "react-icons/ci"
 import { TfiWorld } from "react-icons/tfi"
@@ -46,13 +46,6 @@ const MenuItem : SidebarProps[] =[
         count:2,
         path: "/favorie"
 
-    },
-    {
-        id:3,
-        icon:FaHistory,
-        label:'Historique',
-        badge:true,
-        path:"/history"
     },
     {
         id:4,
@@ -136,7 +129,7 @@ const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
                     className="hidden rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 md:inline-flex"
                     aria-label={sidebarcollaps ? 'Replier la barre latérale' : 'Etendre la barre latérale'}
                 >
-                    {sidebarcollaps ? <span className="text-sm">←</span> : <span className="text-sm">→</span>}
+                    {sidebarcollaps ? <span className="text-sm"></span> : <span className="text-sm"></span>}
                 </button>
             </div>
 
