@@ -6,6 +6,7 @@ import { IoSettingsOutline } from "react-icons/io5"
 import { CgProfile } from "react-icons/cg"
 import { FaChevronDown } from "react-icons/fa"
 import { auth } from '../../pages/firebase'
+import { Link } from "react-router-dom"
 
 
 
@@ -35,7 +36,7 @@ const Header = ({ searchTerm, SetserchTerm, SetSearch, search, sidebarcollaps, o
                         <FiMenu className="h-5 w-5" />
                     </button>
 
-                    <div className={`hidden md:block ${sidebarcollaps ? 'max-w-[12rem]' : 'max-w-[14rem] lg:max-w-sm'}`}>
+                    <div className={`hidden md:block ${sidebarcollaps ? 'max-w-48' : 'max-w-56 lg:max-w-sm'}`}>
                         <h1 className="text-lg font-black text-slate-800 dark:text-white sm:text-xl lg:text-2xl">Le Monde</h1>
                         <p className="text-xs font-medium text-slate-700 dark:text-zinc-300 sm:text-sm">Bienvenue dans notre reseau {user?.displayName}</p>
                     </div>
@@ -59,7 +60,7 @@ const Header = ({ searchTerm, SetserchTerm, SetSearch, search, sidebarcollaps, o
                     </button>
 
                     <button className="rounded-xl p-2.5 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800">
-                        <IoSettingsOutline className="h-5 w-5" />
+                        <Link to='/setting'><IoSettingsOutline className="h-5 w-5" /></Link>
                     </button>
 
                     <div className="hidden items-center gap-3 border-l border-slate-200 pl-3 dark:border-slate-700 md:flex">

@@ -40,7 +40,7 @@ const ExchangeRate = ()=> {
         }
   },[Amount1,Amount2,currencies,currenties2,ExchangeRate])
     return (
-        <div>
+        <div className="md:block">
             <div className="text-2xl font-bold text-slate-600 dark:text-slate-100 mt-10 text-center">
                 Bienvenue dans la page des devise Ici on fait une convertion actualiser des devises mondiaux 
             </div>

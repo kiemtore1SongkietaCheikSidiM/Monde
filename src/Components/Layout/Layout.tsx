@@ -20,7 +20,7 @@ const Layout = ({ searchTerm, SetserchTerm, SetSearch, search }: Props) => {
             sidebarcollaps={sidebarcollaps}
             ontoggle={() => setSidebarcollaps((prev) => !prev)}
           />
-          <main className="flex-1 overflow-y-auto overflow-x-hidden">
+          <main className="flex-1 overflow-y-auto overflow-x-hidden block">
             <div className="mx-auto w-full max-w-7xl px-2 py-3 sm:px-4 md:px-5 lg:px-8 xl:px-10">
               <Outlet />
             </div>

@@ -22,7 +22,7 @@ const Cartepays = ({ countries }: Props) => {
         }
         favories.push(countries)
         localStorage.setItem("favories",JSON.stringify(favories))
-        alert(`Ajouter aux favories`)
+        alert(`Donner mis en favories`)
     }
   return (
     <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-4 md:p-5 lg:p-6">
