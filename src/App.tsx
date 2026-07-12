@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProtectedRoute } from './pages/ProtectedRoute';
 import { AuthProvider } from './pages/AuthContext';
 import './App.css'
@@ -15,9 +16,10 @@ import OpenWheather from './pages/OpenWheather'
 import PixelAPI from './pages/PixelAPI'
 import TimeZoneAPI from './pages/TimeZoneApi'
 import Layout from './Components/Layout/Layout';
-import type { Props } from './Components/Parts/Recherche';
 
-const App  =({search,SetSearch,searchTerm,SetserchTerm}:Props) => {
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [search, setSearch] = useState('');
   return(
     <AuthProvider>
       <BrowserRouter>
@@ -29,8 +31,8 @@ const App  =({search,SetSearch,searchTerm,SetserchTerm}:Props) => {
           <Route path='/error' element={<Error/>}/>
 
           {/* Protected Group Routes (Wrapped in Security and Nav Layout) */}
-          <Route element={<ProtectedRoute><Layout search={search} SetSearch={SetSearch} SetserchTerm={SetserchTerm} searchTerm={searchTerm}/></ProtectedRoute>}>
-            <Route path='/' element={<Dashboard/>}/>
+          <Route element={<ProtectedRoute><Layout search={search} SetSearch={setSearch} SetserchTerm={setSearchTerm} searchTerm={searchTerm}/></ProtectedRoute>}>
+            <Route path='/' element={<Dashboard searchTerm={searchTerm} />}/>
             <Route path='/setting' element={<Setting/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/favorie' element={<Favories/>}/>

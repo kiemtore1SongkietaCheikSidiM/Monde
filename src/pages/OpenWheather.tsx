@@ -19,7 +19,7 @@ const keys = import.meta.env.VITE_Keys
 const base = import.meta.env.VITE_base
 const OpenWheather = ()=> {
     const [weather , SetWeather] = useState<Time | null>()
-    const [search,SetSearch] = useState<string>('')
+    const [search] = useState<string>('')
     const api= {
        key: keys,
        base: base,

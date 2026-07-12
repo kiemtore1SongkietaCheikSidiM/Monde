@@ -25,49 +25,49 @@ const Cartepays = ({ countries }: Props) => {
         alert(`Ajouter aux favories`)
     }
   return (
-    <div className="bg-neutral-100 block max-w-sm p-6 border border-default rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-105">
-        <img src={countries.flag.url_png} alt={countries.names.official} className="rounded-base w-full  h-37 object-cover  text-center"/>
-        <div className="mt-2">
-            <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight text-center">
+    <div className="group flex h-full w-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-4 md:p-5 lg:p-6">
+        <img src={countries.flag.url_png} alt={countries.names.official} className="h-36 w-full rounded-2xl object-cover sm:h-40 md:h-44" />
+        <div className="mt-4 flex-1">
+            <h2 className="mb-3 text-xl font-semibold tracking-tight text-slate-800 sm:text-2xl">
                 {countries.names.common}
             </h2>
-            <p className="flex space-x-2">
-                <strong className="font-bold ">Population: </strong>
-                {countries.population.toLocaleString()}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Region: </strong>
-                {countries.region}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Capital: </strong>
-                {countries.capitals?.[0]?.name}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Sous-region: </strong>
-                {countries.subregion}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Langue: </strong>
-                {countries.languages?.[0]?.name}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Monnaies: </strong>
-                 {countries.currencies?.[0]?.name} {countries.currencies?.[0]?.symbol}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Pays voisins: </strong>
-                {countries.borders}
-            </p>
-            <p className="flex space-x-2">
-                <strong className="font-semibold">Fuseau Horaires: </strong>
-                {countries.timezones}
-            </p>
-            <div onClick={Ajouterfavorie} className="mt-2 p-2 flex space-x-4 bg-blue-400 border rounded-2xl hover:bg-blue-600 cursor-pointer text-2xl text-slate-900 dark:text-slate-100">
-                <p>Ajouter aux favories</p>
-                <div>
-                    <MdFavoriteBorder className="w-7 h-7"/>
-                </div>
+            <div className="space-y-2 text-sm text-slate-700">
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Population:</strong>
+                    {countries.population.toLocaleString()}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Region:</strong>
+                    {countries.region}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Capital:</strong>
+                    {countries.capitals?.[0]?.name}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Sous-region:</strong>
+                    {countries.subregion}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Langue:</strong>
+                    {countries.languages?.[0]?.name}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Monnaies:</strong>
+                    {countries.currencies?.[0]?.name} {countries.currencies?.[0]?.symbol}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Pays voisins:</strong>
+                    {countries.borders}
+                </p>
+                <p className="flex flex-wrap gap-2">
+                    <strong className="font-semibold">Fuseau Horaires:</strong>
+                    {countries.timezones}
+                </p>
+            </div>
+            <div onClick={Ajouterfavorie} className="mt-4 flex cursor-pointer items-center justify-center gap-3 rounded-2xl border border-blue-200 bg-blue-500 p-3 text-base font-medium text-white transition-colors hover:bg-blue-600 sm:text-lg">
+                <span>Ajouter aux favories</span>
+                <MdFavoriteBorder className="h-6 w-6" />
             </div>
         </div>
     </div>

@@ -34,47 +34,35 @@ export type Pays = {
   timezones: string[];
 }
 
-const Dashboard  = ()=>{
-    const [country, SetCountry] = useState<Pays[]>([])
-    const [searchTerm,SetserchTerm] = useState<string>('')
-    
-    useEffect(()=>{
+const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
+    const [country, setCountry] = useState<Pays[]>([])
+
+    useEffect(() => {
         response()
-        
-    },[])
-    async function response() { 
-        try 
-        {
-            const res = await axios(url,
-            {
-                headers: 
-                {
+    }, [])
+
+    async function response() {
+        try {
+            const res = await axios(url, {
+                headers: {
                     Authorization: autorisation
                 }
-            }
-            );
+            });
             const data = await res.data
-            if (data) SetCountry(res.data.data.objects)
-        
-        } 
-        catch (error) 
-        {
-           console.log(error) 
+            if (data) setCountry(res.data.data.objects)
+        } catch (error) {
+            console.log(error)
         }
     }
-    const filtre = country.filter(countr =>countr.names.common.toLowerCase().includes(searchTerm.toLowerCase()))
-    /* console.log(country,'countries') */
+
+    const filtre = country.filter((countr) => countr.names.common.toLowerCase().includes(searchTerm.toLowerCase()))
+
     return (
-        <div className="gap-2 grid grid-cols-3">
-            {
-                filtre.map((countryItem,index)=>{
-                    return(                                   
-                        <Cartepays key={index} countries={countryItem} />                                    
-                        )
-                    })
-            }
-                        
-        </div> 
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            {filtre.map((countryItem, index) => (
+                <Cartepays key={`${countryItem.names.common}-${index}`} countries={countryItem} />
+            ))}
+        </div>
     )
 }
 

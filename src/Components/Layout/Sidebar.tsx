@@ -103,129 +103,104 @@ const MenuItem : SidebarProps[] =[
 
 
 
-const Sidebar = ({sidebarcollaps,ontoggle}:Search)=>{
-    const navigate = useNavigate()
+const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
+    const navigate = useNavigate();
     const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate('/Login');
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
-  };
+        try {
+            await signOut(auth);
+            navigate('/Login');
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+    };
+
     return (
-
-
-        <div className={` ${!sidebarcollaps ?"w-25": "w-64"}
-         transition-all duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80
-         backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 
-         flex flex-col relative z-10`}>
-           
-           
-           {/*  Logo */}
-            <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
-                <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-linear-to-r from-blue-600
-                     to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <TfiWorld className='w-6 h-6 text-white'/>
+        <aside className={`flex flex-col border-r border-slate-200/50 bg-white/80 backdrop-blur-xl transition-all duration-300 ease-in-out dark:border-slate-700/50 dark:bg-slate-900/80 ${!sidebarcollaps ? 'w-20 md:w-22 lg:w-24' : 'w-64 md:w-68 lg:w-72'} relative z-10`}>
+            <div className="flex items-center justify-between border-b border-slate-200/50 p-4 dark:border-slate-700/50 sm:p-6">
+                <div className="flex min-w-0 items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-purple-600 shadow-lg">
+                        <TfiWorld className="h-6 w-6 text-white" />
                     </div>
 
-                     
-                     {/* Condition rendering */}
-                     {sidebarcollaps && (
-                        <div>
-                            <h1
-                            className='text-xl font-bold text-slate-800 dark:text-white'>
-                                Le Monde
-                            </h1>
-                            <p className='
-                             text-xs text-slate-500 dark:text-slate-400'>
-                                Platforme de decouverte des pays du monde
-                            </p>
+                    {sidebarcollaps && (
+                        <div className="min-w-0">
+                            <h1 className="text-lg font-bold text-slate-800 dark:text-white">Le Monde</h1>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Platforme de decouverte des pays du monde</p>
                         </div>
-                     )}
+                    )}
                 </div>
+
+                <button
+                    type="button"
+                    onClick={ontoggle}
+                    className="hidden rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 md:inline-flex"
+                    aria-label={sidebarcollaps ? 'Replier la barre latérale' : 'Etendre la barre latérale'}
+                >
+                    {sidebarcollaps ? <span className="text-sm">←</span> : <span className="text-sm">→</span>}
+                </button>
             </div>
 
-            {/* Navigation. I will display the navigation items in a list and map through the MenuItem array to display each item with its icon and label. If the item has a count or badge, I will display that as well. If the item is active, I will apply a different style to indicate that it is currently selected. */}
-            <nav className='flex-1 p-4 space-y-2 overflow-y-auto'>
-                {MenuItem.map((item)=>{
+            <nav className="flex-1 space-y-2 overflow-y-auto p-3 sm:p-4">
+                {MenuItem.map((item) => {
                     const handleClick = () => {
-                    if (item.action === 'logout') {
-                        handleLogout();
-                    }
-                    else if (item.path)
-                        {
+                        if (item.action === 'logout') {
+                            handleLogout();
+                        } else if (item.path) {
                             navigate(item.path);
                         }
                     };
-                    return(
+                    return (
                         <div key={item.id}>
-                            <button className="w-full cursor-pointer flex items-center justify-between p-3 rounded-xl
-                             transition-all duration-200 hover:bg-blue-200 dark:hover:bg-blue-400
-                              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                               focus:ring-offset-slate-100 dark:focus:ring-offset-slate-900" onClick={handleClick}>
-                                <div className='flex items-center space-x-3 p-2'>    
-                                    <item.icon className={item.color === 'red' ? 'text-red-500 h-5 w-5' : 'text-gray-500 h-5 w-5'}  />
-                                    
-                                    {/* Condition Rendering */}
+                            <button
+                                className={`flex w-full cursor-pointer items-center rounded-xl p-3 transition-all duration-200 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-100 dark:hover:bg-blue-400/80 dark:focus:ring-offset-slate-900 ${sidebarcollaps ? 'justify-start' : 'justify-center'}`}
+                                onClick={handleClick}
+                            >
+                                <div className="flex items-center gap-3">
+                                    <item.icon className={item.color === 'red' ? 'h-5 w-5 text-red-500' : 'h-5 w-5 text-slate-600 dark:text-slate-300'} />
+
                                     {sidebarcollaps && (
-                                        <>
-                                            <span className='font-bold ml-2 text-slate-800 dark:text-slate-200'>
+                                        <div className="flex items-center gap-2">
+                                            <span className="ml-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
                                                 {item.label}
                                             </span>
-                                            {
-                                                item.count && (
-                                                    <span className='px-2 py-1 text-xs bg-slate-200
-                                                     dark:bg-slate-800 text-slate-600 dark:text-slate-100
-                                                     rounded-full'>
-                                                        {item.count}
-                                                    </span>
-                                                )
-                                            }
+                                            {item.count && (
+                                                <span className="rounded-full bg-slate-200 px-2 py-1 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-100">
+                                                    {item.count}
+                                                </span>
+                                            )}
                                             {item.badge && (
-                                                <span className='px-2 py-1 text-xs bg-red-500 text-white
-                                                 rounded-full'>
+                                                <span className="rounded-full bg-red-500 px-2 py-1 text-xs text-white">
                                                     {item.badge}
                                                 </span>
                                             )}
                                             {item.active && (
-                                                <span className='px-2 py-1 text-xs bg-blue-500 text-white
-                                                 rounded-full'>
+                                                <span className="rounded-full bg-blue-500 px-2 py-1 text-xs text-white">
                                                     {item.active}
                                                 </span>
                                             )}
-                                        </>
+                                        </div>
                                     )}
                                 </div>
                             </button>
                         </div>
-                    )
-                })
-                }
+                    );
+                })}
             </nav>
 
-            {/* User profile section. I will display the user's profile picture, name, and role. I will also include a button to log out of the application. */}
-            <div className='p-4 border-t border-slate-200/50
-             dark:border-slate-700/50'>
-                <div className='flex items-center space-x-3 p-3 rounded-xl bg-slate-50
-                 dark:bg-slate-800/50'>
-                    <CgProfile className='w-8 h-8 text-slate-600 dark:text-slate-300'/>
-                    <div className='flex-1 min-w-0'>
+            <div className="border-t border-slate-200/50 p-3 dark:border-slate-700/50 sm:p-4">
+                <div className="flex items-center gap-3 rounded-xl bg-slate-50 p-3 dark:bg-slate-800/50">
+                    <CgProfile className="h-8 w-8 shrink-0 text-slate-600 dark:text-slate-300" />
+                    <div className="min-w-0 flex-1">
                         {sidebarcollaps && (
-                            <div className='flex-1 min-w-0'>
-                            <p className='text-sm font-medium text-slate-800 dark:text-white truncate'>
-                               {user?.displayName}
-                            </p>
-                            <p className='text-sm text-slate-500 dark:text-slate-400 truncate'>
-                                {role}
-                            </p>
-                        </div>
+                            <div className="min-w-0">
+                                <p className="truncate text-sm font-medium text-slate-800 dark:text-white">{user?.displayName}</p>
+                                <p className="truncate text-sm text-slate-500 dark:text-slate-400">{role}</p>
+                            </div>
                         )}
                     </div>
-                 </div>
+                </div>
             </div>
-         </div>
-    )
-}
+        </aside>
+    );
+};
 export default Sidebar
