@@ -11,7 +11,7 @@ import { FaHeart } from "react-icons/fa"
 import { RiTimeZoneFill } from "react-icons/ri"
 import { useNavigate } from "react-router-dom"
 import { signOut } from 'firebase/auth'
-import { auth } from '../../pages/firebase'
+import { auth } from '../../Firebase/firebase'
 import type { Search } from './Header'
 
 

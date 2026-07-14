@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ProtectedRoute } from './pages/ProtectedRoute';
-import { AuthProvider } from './pages/AuthContext';
+import { ProtectedRoute } from './Components/Parts/ProtectedRoute';
+import { AuthProvider } from './Firebase/AuthContext';
 import './App.css'
 import { BrowserRouter, Route, Routes} from "react-router-dom"
 import Login from './pages/Login'

@@ -5,7 +5,7 @@ import { FaBell } from "react-icons/fa"
 import { IoSettingsOutline } from "react-icons/io5"
 import { CgProfile } from "react-icons/cg"
 import { FaChevronDown } from "react-icons/fa"
-import { auth } from '../../pages/firebase'
+import { auth } from '../../Firebase/firebase'
 import { Link } from "react-router-dom"
 
 

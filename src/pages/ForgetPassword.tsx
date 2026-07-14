@@ -2,7 +2,7 @@ import Head from "../Components/Parts/Head"
 import { TfiWorld } from "react-icons/tfi";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { auth } from "./firebase";
+import { auth } from "../Firebase/firebase";
 import { useState } from "react";
 
 export async function resetPassword(email: string): Promise<void> {

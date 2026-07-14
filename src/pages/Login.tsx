@@ -3,7 +3,7 @@ import Head from '../Components/Parts/Head'
 import { TfiWorld } from "react-icons/tfi";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-import { auth } from "./firebase"; // Imports your initialized auth instance
+import { auth } from "../Firebase/firebase"; // Imports your initialized auth instance
 import { Link, useNavigate } from 'react-router-dom';
 
 
