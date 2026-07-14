@@ -1,8 +1,10 @@
 /* Here I import all the package I will use */
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
+const navigate = useNavigate()
 //Typing the timezone
 type Timezone = {
     time:string
@@ -28,6 +30,7 @@ const TimeZoneAPI  =  () => {
                 setTimezone(res.data)
             } catch (error) {
                 console.error(error)
+                navigate("/error")
             }  
         }
     useEffect(()=>{

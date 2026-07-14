@@ -2,11 +2,12 @@
 import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 
 
 
-
+const navigate = useNavigate()
 //var from the secret env 
 const autorisation = import.meta.env.VITE_Authorization
 const url = import.meta.env.VITE_REST_URL
@@ -64,6 +65,7 @@ const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
             if (data) setCountry(res.data.data.objects)
         } catch (error) {
             console.log(error)
+            navigate('/error')
         }
     }
     

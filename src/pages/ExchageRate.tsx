@@ -1,8 +1,9 @@
 /* Here I import all the package I will use */
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-
+const navigate = useNavigate()
 // var calling data from env
 const URL:string = import.meta.env.VITE_exchange
 
@@ -30,6 +31,7 @@ const ExchangeRate = ()=> {
             catch (error) 
             {
                 console.error("Error call by axios :",error)
+                navigate('/error')
             }
         }
         Exchang()

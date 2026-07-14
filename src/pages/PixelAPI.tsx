@@ -1,8 +1,9 @@
 /* Here I import all the package I will use */
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-
+const navigation = useNavigate()
 //typing photo
 type Photo = {
     id:string,
@@ -34,6 +35,7 @@ const PixelAPI: React.FC = () =>{
         } catch (error) {
             console.error(error)
             throw new Error
+            navigation("/error")
         }
     } 
 

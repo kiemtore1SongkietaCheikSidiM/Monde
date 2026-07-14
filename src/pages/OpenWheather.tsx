@@ -1,7 +1,10 @@
 /* Here I import all the package I will use */
 import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
+
+const navigation = useNavigate()
 // Typing of time
 type Time = {
   name: string,
@@ -43,6 +46,7 @@ const OpenWheather = ()=> {
             SetWeather(res.data)
         } catch (error) {
             console.log(error)
+            navigation('/error')
         }
     }
     return(

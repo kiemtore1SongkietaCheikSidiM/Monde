@@ -48,7 +48,7 @@ export async function registerUser(
   }
 }
 
-
+//the main function
 const Register: React.FC = () => {
     //var for all the value
     const [displayName, setDisplayName] = useState<string>('');
@@ -87,7 +87,8 @@ const Register: React.FC = () => {
 
             navigate("/Login")
         } catch (err) {
-            setError("Impossible de créer le compte. Veuillez réessayer.");
+            setError("Impossible de créer le compte. Veuillez réessayer.")
+            navigate("/error")
         } finally {
             setLoading(false);
         }

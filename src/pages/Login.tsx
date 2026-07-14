@@ -8,7 +8,7 @@ import { auth } from "../Firebase/firebase"
 import { Link, useNavigate } from 'react-router-dom'
 
 
-
+const navigate = useNavigate()
 export async function loginUser(email: string, password: string): Promise<void> {
   try {
     // This securely verifies credentials and starts a user session
@@ -29,8 +29,9 @@ export async function loginUser(email: string, password: string): Promise<void> 
       }
     } else {
       console.error("An unexpected error occurred:", error);
+      navigate('/error')
     }
-    throw error
+    throw new Error
   }
 }
 

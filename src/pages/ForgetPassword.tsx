@@ -5,8 +5,9 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { auth } from "../Firebase/firebase";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-
+const navigate = useNavigate()
 //function for the firebase
 export async function resetPassword(email: string): Promise<void> {
   try {
@@ -24,6 +25,7 @@ export async function resetPassword(email: string): Promise<void> {
           break;
         default:
           console.error(`Reset error [${error.code}]: ${error.message}`);
+          navigate('/error')
       }
     } else {
       console.error("An unexpected error occurred:", error);
