@@ -12,12 +12,17 @@ type Timezone = {
 
 // the available continent
 const listcontinent:string[] = ['Africa','Europe','America','Asia']
+
+//The main function
 const TimeZoneAPI  =  () => {
+    //var declaration
     const [ville, setVille] = useState<string>('Ouagadougou')
     const [continent,setContinent] = useState<string>('Africa')
     const [timezone, setTimezone] = useState<Timezone | null>()
+
         const Time =async ()=> {
             try {
+                // Waiting for the url
                 const URL : string = `https://timeapi.io/api/Time/current/zone?timeZone=${continent}/${ville}`                
                 const res = await axios.get(URL)
                 setTimezone(res.data)
