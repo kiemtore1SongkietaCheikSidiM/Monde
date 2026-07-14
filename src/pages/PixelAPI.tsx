@@ -27,7 +27,6 @@ const PixelAPI: React.FC = () =>{
             }  
             )
             setPhoto(role.data.results)
-            console.log(role.data)
         } catch (error) {
             console.error(error)
             throw error
