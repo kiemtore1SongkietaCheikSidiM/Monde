@@ -15,14 +15,14 @@ const PixelAPI: React.FC = () =>{
     const [search,setSearch] = useState<string>("")
     const appel = async (country:string)=>{
         try {
-            const role = await axios.get("https://api.unsplash.com/search/photos",
+            const role = await axios.get(import.meta.env.VITE_unsplash,
             {
             params:{
                 query: `${country} monument nature city landscape`,
                 per_page: 10
             },
             headers:{
-                Authorization: `Client-ID flV0ViLYbaWFMn3d81ml2Fkjl34UGMsD8mqkxQ0uw1E`
+                Authorization: import.meta.env.VITE_unsplashkey
             }
             }  
             )
