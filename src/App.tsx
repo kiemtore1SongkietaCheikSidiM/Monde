@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { useState } from 'react';
 import { ProtectedRoute } from './Components/Parts/ProtectedRoute';
 import { AuthProvider } from './Firebase/AuthContext';
@@ -17,20 +18,26 @@ import PixelAPI from './pages/PixelAPI'
 import TimeZoneAPI from './pages/TimeZoneApi'
 import Layout from './Components/Layout/Layout';
 
+
+
+
+// Here is the main function to set all the web app
 const App = () => {
+  // define of the variable
   const [searchTerm, setSearchTerm] = useState('');
   const [search, setSearch] = useState('');
   return(
+    /* An AuthProvider that give the Authentification */
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Routes (No Layout, No Auth Required) */}
+          {/* Public Routes Anyone can access here without any keys */}
           <Route path='/Login' element={<Login/>}/>
           <Route path='/Register' element={<Register/>}/>
           <Route path='/oublie' element={<ForgetPassword/>}/>
           <Route path='/error' element={<Error/>}/>
 
-          {/* Protected Group Routes (Wrapped in Security and Nav Layout) */}
+          {/* Protected Routes if you want to access here you must have an permissions to acces by email and password */}
           <Route element={<ProtectedRoute><Layout search={search} SetSearch={setSearch} SetserchTerm={setSearchTerm} searchTerm={searchTerm}/></ProtectedRoute>}>
             <Route path='/' element={<Dashboard searchTerm={searchTerm} />}/>
             <Route path='/setting' element={<Setting/>}/>

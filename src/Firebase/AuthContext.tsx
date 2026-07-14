@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged,type User } from 'firebase/auth';
 import { auth } from './firebase'; // Adjust to your firebase.ts path

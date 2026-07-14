@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import type { Pays } from "../../pages/Dashboard"
 import { MdFavoriteBorder } from "react-icons/md"
 

@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { TfiWorld } from "react-icons/tfi";
 import { FaGithub,FaDiscord,FaYoutube,FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";

@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import Head from "../Components/Parts/Head"
 import { TfiWorld } from "react-icons/tfi";
 import { sendPasswordResetEmail } from "firebase/auth";

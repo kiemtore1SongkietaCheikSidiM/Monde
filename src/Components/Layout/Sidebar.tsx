@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import React from 'react'
 import { IoMdHome } from "react-icons/io"
 import { FaMoneyCheckAlt} from "react-icons/fa"

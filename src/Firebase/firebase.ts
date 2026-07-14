@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";

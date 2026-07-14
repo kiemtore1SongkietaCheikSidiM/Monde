@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { MdLightMode } from "react-icons/md"
 import { MdNightlight } from "react-icons/md"
 import { useEffect, useState } from "react"
@@ -36,7 +37,7 @@ const Setting = () => {
                 <div className="block p-15 m-2 border rounded-2xl ">
                     <button className="cursor-pointer" onClick={Clair}>
                         <MdLightMode className="w-25 h-25 text-center text-yellow-300"/>
-                        <p className="mt-20 mr-5  text-slate-700 dark:text-slate-200 ">
+                        <p className="mt-20 mr-5  text-slate-700 dark:text-slate-700 ">
                             Theme Clair
                         </p>
                     </button>
@@ -46,7 +47,7 @@ const Setting = () => {
                 <div className="block p-15 m-2 border rounded-2xl">
                     <button onClick={Sombre}>
                         <MdNightlight className="w-25 h-25 text-center"/>
-                        <p className="mt-20 mr-5  text-slate-700 dark:text-slate-200 ">
+                        <p className="mt-20 mr-5  text-slate-700 dark:text-slate-700 ">
                             Theme Sombre
                         </p>
                     </button>

@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import Head from '../Components/Parts/Head'
 import { TfiWorld } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
@@ -5,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../Firebase/firebase"; // Your firebase.ts file must be in this folder!
+import { auth, db } from "../Firebase/firebase";
 import { useState } from 'react';
 import loadings from "../image/loading.jpeg"
 import { useNavigate } from 'react-router-dom';

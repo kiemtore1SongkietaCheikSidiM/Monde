@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { FiMenu } from "react-icons/fi"
 import Recherche from '../Parts/Recherche'
 import { IoIosAddCircle } from "react-icons/io"

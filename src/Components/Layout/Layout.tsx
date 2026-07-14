@@ -1,3 +1,4 @@
+/* Here I import all the package I will use */
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -8,7 +9,7 @@ const Layout = ({ searchTerm, SetserchTerm, SetSearch, search }: Props) => {
   const [sidebarcollaps, setSidebarcollaps] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.14),_transparent_30%),linear-gradient(135deg,_rgba(248,250,252,1),_rgba(224,231,255,0.95),_rgba(199,210,254,0.85))] text-slate-800 transition-all duration-500 dark:bg-slate-900 dark:text-slate-100">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.14),transparent_30%),linear-gradient(135deg,rgba(248,250,252,1),rgba(224,231,255,0.95),rgba(199,210,254,0.85))] text-slate-800 transition-all duration-500 dark:bg-slate-900 dark:text-slate-100">
       <div className="flex h-screen overflow-hidden">
         <Sidebar sidebarcollaps={sidebarcollaps} ontoggle={() => setSidebarcollaps((prev) => !prev)} />
         <div className="flex flex-1 flex-col overflow-hidden">
