@@ -48,7 +48,7 @@ const ExchangeRate = ()=> {
                         
                         
 
-            <div className='flex flex-row mt-15 gap-x-12 mr-10'>
+            <div className='md:flex md:flex-row mt-15 gap-x-12 mr-10 sm:block'>
                 <div className='border-black border-2 rounded-lg p-3 m-2'>
                     <select name="" id="" value={currencies}
                     onChange={(e)=>setCurrencies(e.target.value)} className='bg-black text-white rounded-lg p-4'>

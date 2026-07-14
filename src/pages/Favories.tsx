@@ -17,7 +17,7 @@ const Favories = () => {
         localStorage.setItem("favories",JSON.stringify(nouveau))
     }
     return (
-        <div className='grid grid-cols-4 gap-5 p-5'>
+        <div className='md:grid md:grid-cols-4 gap-5 p-5 block'>
             {favories.map((country)=>(
                 <div key={country.names.common} className="border rounded-xl p-4 shadow">
                     <img src={country?.flag?.url_png} alt="image_aime" 

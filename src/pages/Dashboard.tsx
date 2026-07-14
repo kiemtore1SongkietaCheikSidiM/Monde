@@ -59,7 +59,7 @@ const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
     const filtre = country.filter((countr) => countr.names.common.toLowerCase().includes(searchTerm.toLowerCase()))
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="md:grid block gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filtre.map((countryItem, index) => (
                 <Cartepays key={`${countryItem.names.common}-${index}`} countries={countryItem} />
             ))}

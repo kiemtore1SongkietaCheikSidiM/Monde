@@ -32,9 +32,9 @@ const Setting = () => {
     setTheme(theme == 'light' ? 'dark' : 'light')
    } */
     return (
-        <div className='p-6 space-y-6'>
+        <div className='p-6 space-y-6 md:flex'>
             {/* <Dashboard/> */}
-            <div className="flex gap-6 grid-cols-2">
+            <div className="md:flex gap-6 md:grid-cols-2 block md:overflow-auto">
                 <div className="block p-15 m-2 border rounded-2xl ">
                     <button className="cursor-pointer" onClick={Clair}>
                         <MdLightMode className="w-25 h-25 text-center text-yellow-300"/>
