@@ -18,7 +18,7 @@ import type { Search } from './Header'
 
 
 
-let role : string = "Visiteur"
+
 const user = auth.currentUser;
 interface SidebarProps {
     id: number,
@@ -188,7 +188,7 @@ const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
                         {sidebarcollaps && (
                             <div className="min-w-0">
                                 <p className="truncate text-sm font-medium text-slate-800 dark:text-white">{user?.displayName}</p>
-                                <p className="truncate text-sm text-slate-500 dark:text-slate-400">{role}</p>
+                                <p className="truncate text-sm text-slate-500 dark:text-slate-400">{user?.email}</p>
                             </div>
                         )}
                     </div>
