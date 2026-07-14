@@ -2,6 +2,7 @@
 import { MdLightMode } from "react-icons/md"
 import { MdNightlight } from "react-icons/md"
 import { useEffect, useState } from "react"
+import { FaCloudUploadAlt } from "react-icons/fa"
 
 const Setting = () => {
     const defaultState : string = localStorage.getItem('theme') || 'light'
@@ -51,6 +52,18 @@ const Setting = () => {
                             Theme Sombre
                         </p>
                     </button>
+                </div>
+                <div className="flex items-center justify-center w-full">
+                    <label id="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 bg-neutral-secondary-medium border border-dashed border-default-strong rounded-base cursor-pointer hover:bg-neutral-tertiary-medium">
+                        <div className="flex flex-col items-center justify-center text-body pt-5 pb-6">
+                            <FaCloudUploadAlt className="h-5 w-5"/>
+                            <p className="mb-2 text-sm">
+                                <span className="font-semibold">Click pour mettre ta photo pour le profile</span> 
+                                oui glisse le fichier
+                            </p>
+                        </div>
+                        <input id="dropzone-file" type="file" className="hidden" />
+                    </label>
                 </div>
             </div>
         </div>
