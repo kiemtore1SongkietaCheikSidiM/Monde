@@ -5,7 +5,11 @@ import Header from './Header';
 import type { Props } from '../Parts/Recherche';
 import { useState } from 'react';
 
+
+
+//The main function. All the page that connected to protected route will call this function
 const Layout = ({ searchTerm, SetserchTerm, SetSearch, search }: Props) => {
+  //declare the state to make a toogle when someone click on the menu icon
   const [sidebarcollaps, setSidebarcollaps] = useState(false);
 
   return (
@@ -23,6 +27,7 @@ const Layout = ({ searchTerm, SetserchTerm, SetSearch, search }: Props) => {
           />
           <main className="flex-1 overflow-y-auto overflow-x-hidden block">
             <div className="mx-auto w-full max-w-7xl px-2 py-3 sm:px-4 md:px-5 lg:px-8 xl:px-10">
+              {/* Here All the page will be set outlet cALL the page*/}
               <Outlet />
             </div>
           </main>

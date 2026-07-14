@@ -6,6 +6,8 @@ import { FirebaseError } from "firebase/app";
 import { auth } from "../Firebase/firebase";
 import { useState } from "react";
 
+
+//function for the firebase
 export async function resetPassword(email: string): Promise<void> {
   try {
     // Firebase sends a localized reset email directly to this address

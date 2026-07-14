@@ -5,13 +5,18 @@ import { useEffect, useState } from "react"
 import { FaCloudUploadAlt } from "react-icons/fa"
 
 const Setting = () => {
+
+    //var for localstorage looking for the current theme
     const defaultState : string = localStorage.getItem('theme') || 'light'
+    //var to theme
     const [theme, setTheme] = useState<string>(defaultState)
 
     useEffect(()=>{
         localStorage.setItem('theme', theme)
         document.documentElement.classList.toggle('dark', theme === 'dark')
     },[theme])
+
+    //function for the theme clair if it clair it remain but if it dark it came back
     const Clair: React.FC =() =>{
         if(theme=='light'){
             setTheme('light')

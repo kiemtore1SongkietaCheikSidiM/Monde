@@ -11,12 +11,15 @@ import { useState } from 'react';
 import loadings from "../image/loading.jpeg"
 import { useNavigate } from 'react-router-dom';
 
+
+// var typing User
 interface UserProfile {
   displayName: string;
   email: string;
   createdAt: Date;
 }
 
+// function to make a registration in the fire base
 export async function registerUser(
   displayName: string,
   email: string,
@@ -47,12 +50,15 @@ export async function registerUser(
 
 
 const Register: React.FC = () => {
-    const [displayName, setDisplayName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordConfirmation, setPasswordConfirmation] = useState('');
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+    //var for all the value
+    const [displayName, setDisplayName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+
+    // var to take the function for navigate
     const navigate = useNavigate()
 
 

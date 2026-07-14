@@ -2,11 +2,13 @@
 import type { Pays } from "../../pages/Dashboard"
 import { MdFavoriteBorder } from "react-icons/md"
 
+
+// typing var
 type Props = {
   countries: Pays;
 };
 
-
+// The main function
 const Cartepays = ({ countries }: Props) => {
     const Ajouterfavorie = ()=>{
         //Catch favorie

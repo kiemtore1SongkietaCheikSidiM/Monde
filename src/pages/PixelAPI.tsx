@@ -2,6 +2,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
+
+//typing photo
 type Photo = {
     id:string,
     urls:{
@@ -10,11 +12,13 @@ type Photo = {
     alt_description:string | null
 }
 
+//The main function
 const PixelAPI: React.FC = () =>{
     const [photo,setPhoto] = useState<Photo[]>([])
     const [search,setSearch] = useState<string>("")
     const appel = async (country:string)=>{
         try {
+            //waiting for the response of the API
             const role = await axios.get(import.meta.env.VITE_unsplash,
             {
             params:{
@@ -29,9 +33,11 @@ const PixelAPI: React.FC = () =>{
             setPhoto(role.data.results)
         } catch (error) {
             console.error(error)
-            throw error
+            throw new Error
         }
     } 
+
+    // Making the search when the value is set and search is pressing
     useEffect(()=>{
         appel(search)
         
@@ -40,6 +46,7 @@ const PixelAPI: React.FC = () =>{
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <input type="text" name="search" id="search" onChange={(e)=>setSearch(e.target.value)}
             className="text-center border" placeholder="Ecrit la nom de la ville"/>
+            {/* displaying the data when it comes */}
             {
                 photo.map((cure)=>(
                     <img src={cure.urls.regular} alt={cure.alt_description ?? "Country"} key={cure.id}

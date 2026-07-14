@@ -3,13 +3,14 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 
-
-
+//Typing the timezone
 type Timezone = {
     time:string
     date:string
     timeZone:string
 }
+
+// the available continent
 const listcontinent:string[] = ['Africa','Europe','America','Asia']
 const TimeZoneAPI  =  () => {
     const [ville, setVille] = useState<string>('Ouagadougou')

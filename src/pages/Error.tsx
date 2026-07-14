@@ -1,6 +1,9 @@
 /* Here I import all the package I will use */
 import Head from "../Components/Parts/Head"
 
+
+
+// Error handling if something get wrong
 const Error: React.FC = ()=>{
     return(
         <div>

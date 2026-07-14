@@ -4,20 +4,26 @@ import { MdDelete } from "react-icons/md"
 import type { Pays } from "./Dashboard"
 
 const Favories = () => {
+
+    //var to take all the data in Pays type
     const [favories,setFavories] = useState<Pays[]>([])
     useEffect(()=>{
+        //Taking the data from localstorage if there is
         const data = JSON.parse(
             localStorage.getItem("favories") || "[]"
         )
+        //setting the data
         setFavories(data)
     },[])
-       const Supprimerfav =(nom:string)=>{
+    const Supprimerfav =(nom:string)=>{
+        // filtering with the name
         const nouveau = favories.filter((item)=>item.names.common !== nom)
         setFavories(nouveau)
         localStorage.setItem("favories",JSON.stringify(nouveau))
     }
     return (
         <div className='md:grid md:grid-cols-4 gap-5 p-5 block'>
+            {/* displaying th favories value */}
             {favories.map((country)=>(
                 <div key={country.names.common} className="border rounded-xl p-4 shadow">
                     <img src={country?.flag?.url_png} alt="image_aime" 

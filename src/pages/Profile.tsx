@@ -3,17 +3,20 @@ import { MdModeEdit,MdDelete } from "react-icons/md"
 import { FaRegUserCircle } from "react-icons/fa";
 import { auth } from "../Firebase/firebase";
 
+//The user data is set here
 const user = auth.currentUser
+
+// The main function
 const Profile = () => {
     return (
-        
+        /* The user image must be there if it already exist else letting the icon */
         <div className='p-6 space-y-6 text-center'>
             <div className="text-center m-4 p-5 relative">
                 <FaRegUserCircle className="w-25 h-25 text-center"/>
             </div>
             
                             
-
+            {/* The action for the user */}
             <div className="flex flex-col items-center m-4 p-4">
                     
                 <h5 className="mb-0.5 text-xl font-semibold tracking-tight text-heading">{user?.displayName}</h5>

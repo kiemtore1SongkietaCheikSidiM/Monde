@@ -1,11 +1,11 @@
 /* Here I import all the package I will use */
-import { useState } from 'react';
+import { useState } from 'react'
 import Head from '../Components/Parts/Head'
-import { TfiWorld } from "react-icons/tfi";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { FirebaseError } from "firebase/app";
-import { auth } from "../Firebase/firebase"; // Imports your initialized auth instance
-import { Link, useNavigate } from 'react-router-dom';
+import { TfiWorld } from "react-icons/tfi"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { FirebaseError } from "firebase/app"
+import { auth } from "../Firebase/firebase"
+import { Link, useNavigate } from 'react-router-dom'
 
 
 
@@ -16,6 +16,7 @@ export async function loginUser(email: string, password: string): Promise<void> 
     const user = userCredential.user;
     console.log(`User logged in successfully! UID: ${user.uid}`);
   } catch (error: unknown) {
+    // catching error and send the message 
     if (error instanceof FirebaseError) {
       switch (error.code) {
         case "auth/invalid-credential":
@@ -36,10 +37,14 @@ export async function loginUser(email: string, password: string): Promise<void> 
 
 
 const Login : React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // Initilize the var to catch the message when it input
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    // Initialize the var for throwing the user if he puts the right data
     const navigate = useNavigate()
+    
 
+    // function to make the submit catch the value et checking if the data is correct
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -55,17 +60,23 @@ const Login : React.FC = () => {
         <div className="relative items-center"> 
             <div className='bg-white/50 dark:bg-slate-700 backdrop-blur-xl border-b
              border-slate-200/50 dark:border-slate-700/80 px-6 py-4'>
+                {/* Putting the head we imported here */}
                 <Head/>
             </div>
+
+
+            {/* This code is in copy and paste from prebuit tailwind css online */}
             <div className="h-full w-full bg-slate-50 dark:bg-neutral-700 text-center justify-center items-center ">
                 <div className="container h-full p-10 items-center text-center">
                     <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200 text-center m-10">
                         <div className="w-full">
                             <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
                                 <div className="g-0 lg:flex lg:flex-wrap">
+
                                     {/* <!-- Left column container--> */}
                                     <div className="px-4 md:px-0 lg:w-6/12">
                                         <div className="md:mx-6 md:p-12">
+
                                             {/* <!-- Logo --> */}
                                             <div className="text-center">
                                                 <TfiWorld className="mx-auto h-10 w-48"/>
@@ -75,6 +86,7 @@ const Login : React.FC = () => {
                                             </div>
 
                                             <form onSubmit={handleLoginSubmit}>
+
                                                 {/* Username input */}
                                                 <div className="relative m-2">
                                                     <input type="email" id="email" name="email" className="border peer p-4 block w-full bg-layer border-layer-line rounded-lg sm:text-sm text-foreground placeholder:text-transparent focus:border-primary-focus focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none focus:pt-6
@@ -121,7 +133,7 @@ const Login : React.FC = () => {
                                                   
                                                
                                                 <div className="mb-12 pb-1 pt-1 text-center">
-                                                    {/* <TERipple  className="w-full"> */}
+                                                    {/* Button to connect */}
                                                         <button className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]" 
                                                         type="submit"
                                                          style={{
@@ -154,15 +166,15 @@ const Login : React.FC = () => {
                                       style={{
                                        background:
                                         "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",}}>
-                                            <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-                                                <h4 className="mb-6 text-xl font-semibold">
-                                                    Bienvenue sur la plateforme
-                                                </h4>
-                                                <p className="text-sm">
-                                                    Cette plateforme vous permet d'acceder a des informations consernant tous les pays du monde. La meteo, la culture, le fuseau horaire et bien d'autres informations sont disponibles sur cette plateforme.
-                                                </p>
-                                            </div>
+                                        <div className="px-4 py-6 text-white md:mx-6 md:p-12">
+                                            <h4 className="mb-6 text-xl font-semibold">
+                                                Bienvenue sur la plateforme
+                                            </h4>
+                                            <p className="text-sm">
+                                                Cette plateforme vous permet d'acceder a des informations consernant tous les pays du monde. La meteo, la culture, le fuseau horaire et bien d'autres informations sont disponibles sur cette plateforme.
+                                            </p>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

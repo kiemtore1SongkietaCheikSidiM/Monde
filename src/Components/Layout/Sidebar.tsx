@@ -18,8 +18,10 @@ import type { Search } from './Header'
 
 
 
+// var to catch the user data
+const user = auth.currentUser
 
-const user = auth.currentUser;
+//Interface for declaration vartype
 interface SidebarProps {
     id: number,
     icon: React.ElementType,
@@ -32,6 +34,8 @@ interface SidebarProps {
     color?: string,
     submenu?: SidebarProps[]
 }
+
+// Menu item that take sidebarprops and assigne to the var a value
 const MenuItem : SidebarProps[] =[
     {
         id:1,
@@ -96,9 +100,12 @@ const MenuItem : SidebarProps[] =[
 
 
 
-
+// The main function
 const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
-    const navigate = useNavigate();
+    // var to call the navigate function to redirect the user after data pushing 
+    const navigate = useNavigate()
+
+    // function for logout to stop the session in firebase
     const handleLogout = async () => {
         try {
             await signOut(auth);
@@ -116,6 +123,7 @@ const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
                         <TfiWorld className="h-6 w-6 text-white" />
                     </div>
 
+                    {/* Condition to the toogle */}
                     {sidebarcollaps && (
                         <div className="min-w-0">
                             <h1 className="text-lg font-bold text-slate-800 dark:text-white">Le Monde</h1>
@@ -123,7 +131,7 @@ const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
                         </div>
                     )}
                 </div>
-
+                
                 <button
                     type="button"
                     onClick={ontoggle}
@@ -135,6 +143,8 @@ const Sidebar = ({ sidebarcollaps, ontoggle }: Search) => {
             </div>
 
             <nav className="flex-1 space-y-2 overflow-y-auto p-3 sm:p-4">
+                
+                {/* Here the the map I will display all the items */}
                 {MenuItem.map((item) => {
                     const handleClick = () => {
                         if (item.action === 'logout') {

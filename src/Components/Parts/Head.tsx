@@ -1,10 +1,11 @@
 /* Here I import all the package I will use */
-import { TfiWorld } from "react-icons/tfi";
-import { FaGithub,FaDiscord,FaYoutube,FaFacebook } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { TfiWorld } from "react-icons/tfi"
+import { FaGithub,FaDiscord,FaYoutube,FaFacebook } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Head : React.FC = () =>{
     return(
+        /* The code come from online prebuit tailwind css */
         <nav className="bg-white/50 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 sm:px-4 sm:py-2.5
          md:px-5 md:py-3
          xl:px-8

@@ -2,6 +2,7 @@
 import { useState } from "react"
 import axios from "axios"
 
+// Typing of time
 type Time = {
   name: string,
   humidity:number,
@@ -16,17 +17,28 @@ type Time = {
     description:string,
   }[]
 }
+
+// var from env secret
 const keys = import.meta.env.VITE_Keys
 const base = import.meta.env.VITE_base
+
+
+//the main function
 const OpenWheather = ()=> {
+    // declaration of the var
     const [weather , SetWeather] = useState<Time | null>()
     const [search,setSearch] = useState<string>('')
+
+    // api var that taking the key
     const api= {
        key: keys,
        base: base,
     }
+
+    //function when the user press to search
     const searchpressed = async ()=>{
         try {
+            // waiting for the API response
             const res = await axios.get(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
             SetWeather(res.data)
         } catch (error) {
