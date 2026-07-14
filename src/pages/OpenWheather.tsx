@@ -19,7 +19,7 @@ const keys = import.meta.env.VITE_Keys
 const base = import.meta.env.VITE_base
 const OpenWheather = ()=> {
     const [weather , SetWeather] = useState<Time | null>()
-    const [search] = useState<string>('')
+    const [search,setSearch] = useState<string>('')
     const api= {
        key: keys,
        base: base,
@@ -33,9 +33,12 @@ const OpenWheather = ()=> {
         }
     }
     return(
-        <div>
+        <div className="bg-cover" style={{
+            backgroundImage : `url(https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png)`
+        }}>
             <div className="block text-center m-3 p-2">
-                <div className="text-center m-3 p-2">
+                <div className="text-center m-3 p-2 block">
+                    <input type="text" id="search" name="search" className="border mr-2 focus:outline-0" onChange={(e)=>{setSearch(e.target.value);console.log(search)}} />
                     <button onClick={searchpressed} className="text-3xl border cursor-pointer bg-blue-400 hover:bg-blue-600 text-slate-600 dark:text-slate-200">
                         Cliquer pour voir la meteo
                     </button>
