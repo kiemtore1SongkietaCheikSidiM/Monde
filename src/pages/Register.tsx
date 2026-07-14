@@ -8,6 +8,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "./firebase"; // Your firebase.ts file must be in this folder!
 import { useState } from 'react';
 import loadings from "../image/loading.jpeg"
+import { useNavigate } from 'react-router-dom';
 
 interface UserProfile {
   displayName: string;
@@ -51,6 +52,7 @@ const Register: React.FC = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
 
 
     // 2. Form submission handler
@@ -75,6 +77,8 @@ const Register: React.FC = () => {
             setEmail('');
             setPassword('');
             setPasswordConfirmation('');
+
+            navigate("/Login")
         } catch (err) {
             setError("Impossible de créer le compte. Veuillez réessayer.");
         } finally {

@@ -4,7 +4,7 @@ import { TfiWorld } from "react-icons/tfi";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { auth } from "./firebase"; // Imports your initialized auth instance
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -28,6 +28,7 @@ export async function loginUser(email: string, password: string): Promise<void> 
     } else {
       console.error("An unexpected error occurred:", error);
     }
+    throw error
   }
 }
 
@@ -36,15 +37,13 @@ export async function loginUser(email: string, password: string): Promise<void> 
 const Login : React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
 
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             await loginUser(email, password);
-            alert("Connexion réussie !");
-            const navigate = useNavigate()
             navigate('/')
-           // Place redirect logic here (e.g., redirect to /dashboard)
         } 
         catch (err) {
             alert("Échec de la connexion.");
@@ -133,7 +132,7 @@ const Login : React.FC = () => {
                                                     {/* </TERipple> */}
                                                     
                                                     {/* ForgetPassword */}
-                                                    <a href="#!">Mot de passe oublié?</a>
+                                                    <Link to="/oublie">Mot de passe oublié?</Link>
                                                 </div>
 
                                                 {/* Register button */}
@@ -141,7 +140,7 @@ const Login : React.FC = () => {
                                                     <p className="mb-0 mr-2">Vous n'avez pas de compte ?</p>
                                                     {/* <TERipple rippleColor="light"> */}
                                                         <button type="button" className="inline-block rounded border-2 border-danger px-6 pb-1.5 pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
-                                                            Creer un compte
+                                                            <Link to="/Register">Creer un compte</Link>
                                                         </button>
                                                     {/* </TERipple> */}
                                                 </div>
