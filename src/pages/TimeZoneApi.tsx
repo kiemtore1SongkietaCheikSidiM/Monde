@@ -39,8 +39,6 @@ const TimeZoneAPI: React.FC  =  () => {
     },[])
     const Voir = ()=>{
         Time()
-        console.log(ville)
-        console.log(continent)
     }
     return (
         <div>
