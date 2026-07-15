@@ -1,10 +1,10 @@
 /* Here I import all the package I will use */
 import axios from "axios"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-const navigate = useNavigate()
+
 //Typing the timezone
 type Timezone = {
     time:string
@@ -16,7 +16,8 @@ type Timezone = {
 const listcontinent:string[] = ['Africa','Europe','America','Asia']
 
 //The main function
-const TimeZoneAPI  =  () => {
+const TimeZoneAPI: React.FC  =  () => {
+    const navigate = useNavigate()
     //var declaration
     const [ville, setVille] = useState<string>('Ouagadougou')
     const [continent,setContinent] = useState<string>('Africa')

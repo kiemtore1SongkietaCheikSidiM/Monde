@@ -8,8 +8,9 @@ import { auth } from "../Firebase/firebase"
 import { Link, useNavigate } from 'react-router-dom'
 
 
-const navigate = useNavigate()
+
 export async function loginUser(email: string, password: string): Promise<void> {
+    const navigate = useNavigate()
   try {
     // This securely verifies credentials and starts a user session
     const userCredential = await signInWithEmailAndPassword(auth, email, password);

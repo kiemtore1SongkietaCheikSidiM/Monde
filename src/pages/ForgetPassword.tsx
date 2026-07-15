@@ -7,9 +7,10 @@ import { auth } from "../Firebase/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate()
+
 //function for the firebase
 export async function resetPassword(email: string): Promise<void> {
+    const navigate = useNavigate()
   try {
     // Firebase sends a localized reset email directly to this address
     await sendPasswordResetEmail(auth, email);

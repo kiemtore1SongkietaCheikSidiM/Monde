@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 
-const navigation = useNavigate()
+
 // Typing of time
 type Time = {
   name: string,
@@ -27,7 +27,8 @@ const base = import.meta.env.VITE_base
 
 
 //the main function
-const OpenWheather = ()=> {
+const OpenWheather : React.FC = ()=> {
+    const navigation = useNavigate()
     // declaration of the var
     const [weather , SetWeather] = useState<Time | null>()
     const [search,setSearch] = useState<string>('')

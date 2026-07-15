@@ -3,13 +3,13 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-const navigate = useNavigate()
+
 // var calling data from env
 const URL:string = import.meta.env.VITE_exchange
 
 // The main function
-const ExchangeRate = ()=> {
-
+const ExchangeRate: React.FC = ()=> {
+    const navigate = useNavigate()
     // var for the rate
     const [Amount1,SetAmount] = useState<number>(0)
     const [Amount2, SetAmount2] = useState<number>(0)

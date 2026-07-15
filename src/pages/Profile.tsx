@@ -7,7 +7,7 @@ import { auth } from "../Firebase/firebase";
 const user = auth.currentUser
 
 // The main function
-const Profile = () => {
+const Profile: React.FC = () => {
     return (
         /* The user image must be there if it already exist else letting the icon */
         <div className='p-6 space-y-6 text-center'>

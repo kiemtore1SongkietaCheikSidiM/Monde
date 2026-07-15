@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-const navigate = useNavigate()
+
 //var from the secret env 
 const autorisation = import.meta.env.VITE_Authorization
 const url = import.meta.env.VITE_REST_URL
@@ -45,6 +45,7 @@ export type Pays = {
 
 // The main function
 const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
+    const navigate = useNavigate()
     // The var to country
     const [country, setCountry] = useState<Pays[]>([])
      

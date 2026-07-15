@@ -4,7 +4,7 @@ import { MdNightlight } from "react-icons/md"
 import { useEffect, useState } from "react"
 import { FaCloudUploadAlt } from "react-icons/fa"
 
-const Setting = () => {
+const Setting: React.FC = () => {
 
     //var for localstorage looking for the current theme
     const defaultState : string = localStorage.getItem('theme') || 'light'

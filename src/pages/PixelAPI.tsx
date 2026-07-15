@@ -3,7 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const navigation = useNavigate()
+
 //typing photo
 type Photo = {
     id:string,
@@ -15,6 +15,7 @@ type Photo = {
 
 //The main function
 const PixelAPI: React.FC = () =>{
+    const navigation = useNavigate()
     const [photo,setPhoto] = useState<Photo[]>([])
     const [search,setSearch] = useState<string>("")
     const appel = async (country:string)=>{

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { MdDelete } from "react-icons/md"
 import type { Pays } from "./Dashboard"
 
-const Favories = () => {
+const Favories : React.FC = () => {
 
     //var to take all the data in Pays type
     const [favories,setFavories] = useState<Pays[]>([])

@@ -22,7 +22,7 @@ import Layout from './Components/Layout/Layout';
 
 
 // Here is the main function to set all the web app
-const App = () => {
+const App:React.FC = () => {
   // define of the variable
   const [searchTerm, setSearchTerm] = useState('');
   const [search, setSearch] = useState('');
