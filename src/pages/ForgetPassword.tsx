@@ -10,11 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 //function for the firebase
 export async function resetPassword(email: string): Promise<void> {
-    const navigate = useNavigate()
+    
   try {
     // Firebase sends a localized reset email directly to this address
     await sendPasswordResetEmail(auth, email);
-    console.log("Password reset email sent successfully!");
     } catch (error: unknown) {
     if (error instanceof FirebaseError) {
       switch (error.code) {
@@ -26,6 +25,7 @@ export async function resetPassword(email: string): Promise<void> {
           break;
         default:
           console.error(`Reset error [${error.code}]: ${error.message}`);
+          const navigate = useNavigate()
           navigate('/error')
       }
     } else {
@@ -44,7 +44,7 @@ const ForgetPassword : React.FC = () => {
             await resetPassword(email);
             setMessage(true);
         } catch (err) {
-        /* setMessage("Échec de l'envoi de l'e-mail. Veuillez réessayer."); */
+        setMessage(false);
         console.error(err)
         }
     };
@@ -52,7 +52,9 @@ const ForgetPassword : React.FC = () => {
     return (
         <div>
             <Head/>
-            {message ? <div>Un e-mail de réinitialisation a été envoyé !</div>:
+            {message ? <div className="text-center text-4xl m-4 p-4">
+                Un e-mail de réinitialisation a été envoyé ! a {email}
+                </div>:
                 <section className="bg-gray-50 dark:bg-gray-900">
                     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                         <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -75,7 +77,11 @@ const ForgetPassword : React.FC = () => {
                                     Change
                                 </button>
                                 <div>
-                                
+                                {message && (
+                                    <div>
+                                        Échec de l'envoi de l'e-mail. Veuillez réessayer.
+                                    </div>
+                                )}
                                 </div>
                             </form>
                         </div>

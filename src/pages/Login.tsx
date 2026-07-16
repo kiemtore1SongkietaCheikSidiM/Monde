@@ -10,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 export async function loginUser(email: string, password: string): Promise<void> {
-    const navigate = useNavigate()
   try {
     // This securely verifies credentials and starts a user session
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -30,6 +29,7 @@ export async function loginUser(email: string, password: string): Promise<void> 
       }
     } else {
       console.error("An unexpected error occurred:", error);
+      const navigate = useNavigate()
       navigate('/error')
     }
     throw new Error

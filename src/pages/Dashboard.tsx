@@ -45,7 +45,6 @@ export type Pays = {
 
 // The main function
 const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
-    const navigate = useNavigate()
     // The var to country
     const [country, setCountry] = useState<Pays[]>([])
      
@@ -66,6 +65,7 @@ const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
             if (data) setCountry(res.data.data.objects)
         } catch (error) {
             console.log(error)
+            const navigate = useNavigate()
             navigate('/error')
         }
     }

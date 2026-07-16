@@ -9,7 +9,6 @@ const URL:string = import.meta.env.VITE_exchange
 
 // The main function
 const ExchangeRate: React.FC = ()=> {
-    const navigate = useNavigate()
     // var for the rate
     const [Amount1,SetAmount] = useState<number>(0)
     const [Amount2, SetAmount2] = useState<number>(0)
@@ -31,6 +30,7 @@ const ExchangeRate: React.FC = ()=> {
             catch (error) 
             {
                 console.error("Error call by axios :",error)
+                const navigate = useNavigate()
                 navigate('/error')
             }
         }

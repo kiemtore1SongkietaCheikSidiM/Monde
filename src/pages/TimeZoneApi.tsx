@@ -17,7 +17,6 @@ const listcontinent:string[] = ['Africa','Europe','America','Asia']
 
 //The main function
 const TimeZoneAPI: React.FC  =  () => {
-    const navigate = useNavigate()
     //var declaration
     const [ville, setVille] = useState<string>('Ouagadougou')
     const [continent,setContinent] = useState<string>('Africa')
@@ -31,6 +30,7 @@ const TimeZoneAPI: React.FC  =  () => {
                 setTimezone(res.data)
             } catch (error) {
                 console.error(error)
+                const navigate = useNavigate()
                 navigate("/error")
             }  
         }

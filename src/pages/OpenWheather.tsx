@@ -28,7 +28,6 @@ const base = import.meta.env.VITE_base
 
 //the main function
 const OpenWheather : React.FC = ()=> {
-    const navigation = useNavigate()
     // declaration of the var
     const [weather , SetWeather] = useState<Time | null>()
     const [search,setSearch] = useState<string>('')
@@ -47,6 +46,7 @@ const OpenWheather : React.FC = ()=> {
             SetWeather(res.data)
         } catch (error) {
             console.log(error)
+            const navigation = useNavigate()
             navigation('/error')
         }
     }

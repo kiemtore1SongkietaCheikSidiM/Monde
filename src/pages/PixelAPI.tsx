@@ -15,7 +15,6 @@ type Photo = {
 
 //The main function
 const PixelAPI: React.FC = () =>{
-    const navigation = useNavigate()
     const [photo,setPhoto] = useState<Photo[]>([])
     const [search,setSearch] = useState<string>("")
     const appel = async (country:string)=>{
@@ -36,6 +35,7 @@ const PixelAPI: React.FC = () =>{
         } catch (error) {
             console.error(error)
             throw new Error
+            const navigation = useNavigate()
             navigation("/error")
         }
     } 
