@@ -24,8 +24,8 @@ import Layout from './Components/Layout/Layout';
 // Here is the main function to set all the web app
 const App:React.FC = () => {
   // define of the variable
-  const [searchTerm, setSearchTerm] = useState('');
-  const [search, setSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [search, setSearch] = useState<string>('');
   return(
     /* An AuthProvider that give the Authentification */
     <AuthProvider>
