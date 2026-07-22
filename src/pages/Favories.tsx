@@ -1,7 +1,7 @@
 /* Here I import all the package I will use */
 import { useEffect, useState } from "react"
 import { MdDelete } from "react-icons/md"
-import type { Pays } from "./Dashboard"
+import type { Pays } from "../types"
 
 const Favories : React.FC = () => {
 

@@ -2,18 +2,10 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import type { Timezone } from "../types"
+import { listcontinent } from "../constants"
 
 
-
-//Typing the timezone
-type Timezone = {
-    time:string
-    date:string
-    timeZone:string
-}
-
-// the available continent
-const listcontinent:string[] = ['Africa','Europe','America','Asia']
 
 //The main function
 const TimeZoneAPI: React.FC  =  () => {

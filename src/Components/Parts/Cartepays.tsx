@@ -1,12 +1,11 @@
 /* Here I import all the package I will use */
-import type { Pays } from "../../pages/Dashboard"
+import type { Pays } from "../../types"; 
 import { MdFavoriteBorder } from "react-icons/md"
+import type { Props } from "../../types";
 
 
 // typing var
-type Props = {
-  countries: Pays;
-};
+
 
 // The main function
 const Cartepays = ({ countries }: Props) => {

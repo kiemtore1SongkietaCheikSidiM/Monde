@@ -2,39 +2,10 @@
 import { useState } from 'react'
 import Head from '../Components/Parts/Head'
 import { TfiWorld } from "react-icons/tfi"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { FirebaseError } from "firebase/app"
-import { auth } from "../Firebase/firebase"
 import { Link, useNavigate } from 'react-router-dom'
+import { loginUser } from '../Firebase/LogregistreFir'
 
 
-
-export async function loginUser(email: string, password: string): Promise<void> {
-  try {
-    // This securely verifies credentials and starts a user session
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    console.log(`User logged in successfully! UID: ${user.uid}`);
-  } catch (error: unknown) {
-    // catching error and send the message 
-    if (error instanceof FirebaseError) {
-      switch (error.code) {
-        case "auth/invalid-credential":
-        case "auth/user-not-found":
-        case "auth/wrong-password":
-          console.error("Adresse e-mail ou mot de passe incorrect.");
-          break;
-        default:
-          console.error(`Login error [${error.code}]: ${error.message}`);
-      }
-    } else {
-      console.error("An unexpected error occurred:", error);
-      const navigate = useNavigate()
-      navigate('/error')
-    }
-    throw new Error
-  }
-}
 
 
 

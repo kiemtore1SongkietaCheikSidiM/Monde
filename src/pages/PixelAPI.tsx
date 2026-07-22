@@ -2,18 +2,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import type { Photo } from "../types"
 
 
-//typing photo
-type Photo = {
-    id:string,
-    urls:{
-        regular:string
-    }
-    alt_description:string | null
-}
 
-//The main function
 const PixelAPI: React.FC = () =>{
     const [photo,setPhoto] = useState<Photo[]>([])
     const [search,setSearch] = useState<string>("")

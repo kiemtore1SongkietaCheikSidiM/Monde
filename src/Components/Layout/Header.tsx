@@ -8,6 +8,7 @@ import { CgProfile } from "react-icons/cg"
 import { FaChevronDown } from "react-icons/fa"
 import { auth } from '../../Firebase/firebase'
 import { Link } from "react-router-dom"
+import type { Search } from "../../types"
 
 
 
@@ -19,14 +20,7 @@ const user = auth.currentUser
 let newnotification : number = 3
 
 // declaration of a type in typescript here I declare the variable search 
-export type Search={
-    searchTerm?:string | (()=> void) 
-    search?:string
-    SetserchTerm?:React.Dispatch<React.SetStateAction<string>>
-    SetSearch?:React.Dispatch<React.SetStateAction<string>>
-    sidebarcollaps?:boolean
-    ontoggle?:()=>void
-}
+
 
 
 // Here the main function which is export by default

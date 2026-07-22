@@ -4,7 +4,7 @@ import { TfiWorld } from "react-icons/tfi";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase/firebase";
-import type { Search } from "./Header";
+import type { Search } from "../../types";
 import { MenuItem } from "../../constants";
 
 

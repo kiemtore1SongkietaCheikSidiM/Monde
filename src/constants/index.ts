@@ -72,3 +72,4 @@ export const MenuItem : SidebarProps[] =[
         action:"logout"
     },
 ]
+export const listcontinent:string[] = ['Africa','Europe','America','Asia']

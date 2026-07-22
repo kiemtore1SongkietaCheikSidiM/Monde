@@ -1,16 +1,9 @@
 /* Here I import all the package I will use */
 import { IoMdSearch } from "react-icons/io"
-import type { Search } from "../Layout/Header"
+import type { Search } from "../../types"
 
 
 // var typing to search
-export type Props={
-    searchTerm:string,
-    search:string
-    SetserchTerm: React.Dispatch<React.SetStateAction<string>>
-    SetSearch:React.Dispatch<React.SetStateAction<string>>
-}
-
 //the main function 
 const Recherche = ({SetserchTerm,SetSearch}:Search)=> {
     return (

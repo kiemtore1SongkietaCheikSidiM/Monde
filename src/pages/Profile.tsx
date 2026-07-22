@@ -1,10 +1,7 @@
 /* Here I import all the package I will use */
 import { MdModeEdit,MdDelete } from "react-icons/md"
 import { FaRegUserCircle } from "react-icons/fa";
-import { auth } from "../Firebase/firebase";
-
-//The user data is set here
-const user = auth.currentUser
+import { user } from "../constants/Appelapi";
 
 // The main function
 const Profile: React.FC = () => {

@@ -3,50 +3,13 @@ import Head from '../Components/Parts/Head'
 import { TfiWorld } from "react-icons/tfi";
 import { CgProfile } from "react-icons/cg";
 import { MdEmail } from "react-icons/md";
-import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../Firebase/firebase";
 import { useState } from 'react';
 import loadings from "../image/loading.jpeg"
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../Firebase/LogregistreFir';
 
 
-// var typing User
-interface UserProfile {
-  displayName: string;
-  email: string;
-  createdAt: Date;
-}
 
-// function to make a registration in the fire base
-export async function registerUser(
-  displayName: string,
-  email: string,
-  password: string
-): Promise<void> {
-  try {
-    // TypeScript automatically infers the correct type for userCredential!
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-
-    const userProfile: UserProfile = {
-      displayName: displayName,
-      email: email,
-      createdAt: new Date()
-    };
-
-    await setDoc(doc(db, "users", user.uid), userProfile);
-    console.log(`Successfully registered user with UID: ${user.uid}`);
-
-  } catch (error: unknown) {
-    if (error instanceof FirebaseError) {
-      console.error(`Firebase error [${error.code}]: ${error.message}`);
-    } else {
-      console.error("An unexpected error occurred:", error);
-    }
-  }
-}
 
 //the main function
 const Register: React.FC = () => {

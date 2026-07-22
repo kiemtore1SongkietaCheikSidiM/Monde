@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { URL } from "../constants/Appelapi"
 
 
-// var calling data from env
-const URL:string = import.meta.env.VITE_exchange
 
 // The main function
 const ExchangeRate: React.FC = ()=> {

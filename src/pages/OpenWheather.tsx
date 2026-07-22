@@ -2,28 +2,14 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-
+import type { Time } from "../types"
+import { keys,base } from "../constants/Appelapi"
 
 
 // Typing of time
-type Time = {
-  name: string,
-  humidity:number,
-  wind_speed:number,
-  pressure:number,
-  main: {
-    temp: number,
-  },
-  weather: {
-    main: string,
-    icon:string,
-    description:string,
-  }[]
-}
 
 // var from env secret
-const keys = import.meta.env.VITE_Keys
-const base = import.meta.env.VITE_base
+
 
 
 //the main function

@@ -3,47 +3,12 @@ import Cartepays from "../Components/Parts/Cartepays"
 import { useState,useEffect } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import type { Pays } from "../types"
+import { autorisation,url } from "../constants/Appelapi"
 
 
 
 
-
-//var from the secret env 
-const autorisation = import.meta.env.VITE_Authorization
-const url = import.meta.env.VITE_REST_URL
-
-// typing capital
-type Capital = {
-  name: string;
-}
-
-//typing currencies
-type Monnais={
-    name:string,
-    symbol:string
-}
-
-//typing Pays
-export type Pays = {
-  names: {
-    common: string;
-    official: string;
-  };
-  flag: {
-    url_png: string;
-  };
-  capitals: Capital[];
-  population: number;
-  region: string;
-  subregion: string;
-  languages:Capital[];
-  currencies: Monnais[];
-  borders: string[];
-  timezones: string[];
-}
-
-
-// The main function
 const Dashboard = ({ searchTerm = '' }: { searchTerm?: string }) => {
     // The var to country
     const [country, setCountry] = useState<Pays[]>([])
