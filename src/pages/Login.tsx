@@ -30,7 +30,7 @@ const Login : React.FC = () => {
     };
 
     return (
-        <div className="relative items-center"> 
+        <div className="relative"> 
             <div className='bg-white/50 dark:bg-slate-700 backdrop-blur-xl border-b
              border-slate-200/50 dark:border-slate-700/80 px-6 py-4'>
                 {/* Putting the head we imported here */}
@@ -40,7 +40,7 @@ const Login : React.FC = () => {
 
             {/* This code is in copy and paste from prebuit tailwind css online */}
             <div className="h-full w-full bg-slate-50 dark:bg-neutral-700 text-center justify-center items-center ">
-                <div className="container h-full p-10 items-center text-center">
+                <div className="h-full p-10 items-center text-center">
                     <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200 text-center m-10">
                         <div className="w-full">
                             <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
@@ -125,7 +125,13 @@ const Login : React.FC = () => {
                                                 <div className="flex items-center justify-between pb-6">
                                                     <p className="mb-0 mr-2">Vous n'avez pas de compte ?</p>
                                                     {/* <TERipple rippleColor="light"> */}
-                                                        <button type="button" className="inline-block rounded border-2 border-danger px-6 pb-1.5 pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
+                                                        <button type="button" className="inline-block rounded border-2
+                                                         border-danger px-6 pb-1.5 pt-2 text-xs font-medium uppercase 
+                                                         leading-normal text-danger transition duration-150 ease-in-out 
+                                                         hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 
+                                                         hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 
+                                                         focus:outline-none focus:ring-0 active:border-danger-700 
+                                                         active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10">
                                                             <Link to="/Register">Creer un compte</Link>
                                                         </button>
                                                     {/* </TERipple> */}
@@ -135,7 +141,7 @@ const Login : React.FC = () => {
                                     </div>
 
                                     {/* <!-- Right column container with background and description--> */}
-                                    <div className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                                    <div className="flex  items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none max-sm:hidden max-md:hidden"
                                       style={{
                                        background:
                                         "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",}}>
